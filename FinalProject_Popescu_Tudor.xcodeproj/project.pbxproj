@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B166510271CEFAA007E68C5 /* BudgetViewController.swift */; };
 		8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739B271B6D3300FFE204 /* AppDelegate.swift */; };
 		8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739D271B6D3300FFE204 /* SceneDelegate.swift */; };
 		8B2273A0271B6D3300FFE204 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739F271B6D3300FFE204 /* ViewController.swift */; };
@@ -18,7 +19,6 @@
 		8B2273BF271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */; };
 		8B2273CE271BB78100FFE204 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273CD271BB78100FFE204 /* TableViewController.swift */; };
 		8B2273D1271C6F0D00FFE204 /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273D0271C6F0D00FFE204 /* AddExpenseViewController.swift */; };
-		8B2273D3271C70BE00FFE204 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273D2271C70BE00FFE204 /* BudgetViewController.swift */; };
 		8B2273D5271C70D500FFE204 /* BudgetTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273D4271C70D500FFE204 /* BudgetTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B166510271CEFAA007E68C5 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		8B227398271B6D3300FFE204 /* FinalProject_Popescu_Tudor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Popescu_Tudor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B22739B271B6D3300FFE204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B22739D271B6D3300FFE204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProject_Popescu_TudorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B2273CD271BB78100FFE204 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8B2273D0271C6F0D00FFE204 /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
-		8B2273D2271C70BE00FFE204 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		8B2273D4271C70D500FFE204 /* BudgetTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,8 +116,8 @@
 				8B2273A9271B6D3500FFE204 /* Info.plist */,
 				8B2273CD271BB78100FFE204 /* TableViewController.swift */,
 				8B2273D0271C6F0D00FFE204 /* AddExpenseViewController.swift */,
-				8B2273D2271C70BE00FFE204 /* BudgetViewController.swift */,
 				8B2273D4271C70D500FFE204 /* BudgetTableTableViewController.swift */,
+				8B166510271CEFAA007E68C5 /* BudgetViewController.swift */,
 			);
 			path = FinalProject_Popescu_Tudor;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2273A0271B6D3300FFE204 /* ViewController.swift in Sources */,
-				8B2273D3271C70BE00FFE204 /* BudgetViewController.swift in Sources */,
+				8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */,
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B2273D1271C6F0D00FFE204 /* AddExpenseViewController.swift in Sources */,
 				8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */,
