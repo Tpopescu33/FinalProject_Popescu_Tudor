@@ -11,6 +11,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+  
+    
    
     
 
@@ -21,7 +23,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var IncomeTable: UITableView!
     
-    @IBOutlet weak var AddExpenseButton: UIButton!
+    
+    @IBAction func addExpenseBtn(_ sender: Any) {
+        performSegue(withIdentifier: "addExpenseSeg", sender: self)
+    }
+    
+    
+    
+    
     
     
     
