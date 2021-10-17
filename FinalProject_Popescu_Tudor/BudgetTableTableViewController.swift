@@ -8,32 +8,40 @@
 import UIKit
 
 struct Section {
-    init(title: String, options: [String], isOpened: Bool = false) {
+    init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
         self.title = title
         self.options = options
         self.isOpen = false
+        self.titleAmount = titleAmount
+        self.optionsAmount = optionsAmount
         
     }
     var title: String
     var options: [String]
     var isOpen: Bool
+    var titleAmount: Int
+    var optionsAmount: [Int]
     
     mutating func addOption(option: String){
         options.append(option)
+        
         
     }
     
     
 }
 
+var totalIncome: Int = 3000
+var totalExpenses: Int = 2500
+
 class BudgetTableTableViewController: UITableViewController {
 
-    
   
+    
         
       
-    var sections = [Section(title: "Income", options: ["Salary"]),
-                    Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance"])]
+    var sections = [Section(title: "Income", options: ["Salary", "Child Tax Credit"], titleAmount:totalIncome, optionsAmount: [2700, 300]),
+                    Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance", "Groceries"], titleAmount: totalExpenses, optionsAmount: [200, 80, 50, 1200, 400, 80, 490])]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,13 +74,18 @@ class BudgetTableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath)
         
+        let cellName = cell.viewWithTag(3) as! UILabel
+        let cellAmount = cell.viewWithTag(4) as! UILabel
+            
         if indexPath.row == 0 {
            
-            cell.textLabel?.text = sections[indexPath.section].title
-            cell.backgroundColor = .systemTeal
+            cellName.text = self.sections[indexPath.section].title
+            cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
+            cell.backgroundColor = .systemGreen
         } else {
-            cell.textLabel?.text = sections[indexPath.section].options[indexPath.row - 1]
-            cell.backgroundColor = .systemRed
+            cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
+            cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
+            cell.backgroundColor = .systemGray
            
         }
         
