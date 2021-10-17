@@ -16,6 +16,7 @@
 		8B2273B3271B6D3500FFE204 /* FinalProject_Popescu_TudorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273B2271B6D3500FFE204 /* FinalProject_Popescu_TudorTests.swift */; };
 		8B2273BD271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273BC271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift */; };
 		8B2273BF271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */; };
+		8B2273CE271BB78100FFE204 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273CD271BB78100FFE204 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8B2273B8271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject_Popescu_TudorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2273BC271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProject_Popescu_TudorUITests.swift; sourceTree = "<group>"; };
 		8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProject_Popescu_TudorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B2273CD271BB78100FFE204 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				8B2273A4271B6D3500FFE204 /* Assets.xcassets */,
 				8B2273A6271B6D3500FFE204 /* LaunchScreen.storyboard */,
 				8B2273A9271B6D3500FFE204 /* Info.plist */,
+				8B2273CD271BB78100FFE204 /* TableViewController.swift */,
 			);
 			path = FinalProject_Popescu_Tudor;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				8B2273A0271B6D3300FFE204 /* ViewController.swift in Sources */,
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */,
+				8B2273CE271BB78100FFE204 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
