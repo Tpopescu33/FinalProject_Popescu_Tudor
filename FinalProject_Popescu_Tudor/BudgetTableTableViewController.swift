@@ -7,33 +7,6 @@
 
 import UIKit
 
-struct Section {
-    init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
-        self.title = title
-        self.options = options
-        self.isOpen = false
-        self.titleAmount = titleAmount
-        self.optionsAmount = optionsAmount
-        
-    }
-    var title: String
-    var options: [String]
-    var isOpen: Bool
-    var titleAmount: Int
-    var optionsAmount: [Int]
-    
-    mutating func addOption(option: String){
-        options.append(option)
-        
-        
-    }
-    
-    
-}
-
-var totalIncome: Int = 3000
-var totalExpenses: Int = 2500
-
 class BudgetTableTableViewController: UITableViewController {
 
   
