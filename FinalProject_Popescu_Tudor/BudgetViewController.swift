@@ -44,15 +44,26 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-            
-        
-
+        self.tableView.allowsSelectionDuringEditing = true
     }
 
-    // MARK: - Table view data source
+    @IBAction func editBtn(_ sender: UIBarButtonItem) {
+        
+        self.tableView.isEditing = !self.tableView.isEditing
+        sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete){
+            sections[indexPath.section].options.remove(at: indexPath.item - 1)
+            sections[indexPath.section].optionsAmount.remove(at: indexPath.item - 1)
 
+
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sections.count
@@ -68,7 +79,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return 1
         }
     }
-
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        }
+         return true
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "budgetCell", for: indexPath)
@@ -81,6 +97,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
             cell.backgroundColor = .systemGreen
+            
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
             cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
