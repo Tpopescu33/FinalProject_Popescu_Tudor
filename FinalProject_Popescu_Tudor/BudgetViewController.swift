@@ -39,6 +39,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var sections = [Section(title: "Income", options: ["Salary", "Child Tax Credit"], titleAmount:totalIncome, optionsAmount: [2700, 300]),
                     Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance", "Groceries"], titleAmount: totalExpenses, optionsAmount: [200, 80, 50, 1200, 400, 80, 490])]
     
+    let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -129,5 +130,26 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
     }
-
+    var monthNo = 0
+    
+    @IBOutlet weak var monthLabel: UILabel!
+    
+    
+    @IBAction func monthBtn(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Select Month", message: "", preferredStyle: .actionSheet)
+        
+        for monthNo in 0...11 {
+            actionSheet.addAction(UIAlertAction(title: "\(months[monthNo])", style: .default, handler: { _ in
+                
+                self.monthLabel.text = "\(self.months[monthNo])"
+                
+            }))
+        }
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+  
+    
 }
