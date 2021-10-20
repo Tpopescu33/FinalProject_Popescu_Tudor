@@ -31,6 +31,9 @@ struct Section {
     
 }
 
+
+let green4 = UIColor(hexString: "#C6E377")
+let green3 = UIColor(hexString: "#36622B")
 var totalIncome: Int = 3000
 var totalExpenses: Int = 2500
 
@@ -97,12 +100,17 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            cell.backgroundColor = .systemGreen
+            cell.backgroundColor = green3
+            cellName.textColor = green4
+            cellAmount.textColor = green4
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
             cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
-            cell.backgroundColor = .systemGray
+            cell.backgroundColor = green4
+            cellName.textColor = green3
+            cellAmount.textColor = green3
+            
            
         }
         
@@ -153,3 +161,4 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
     
 }
+
