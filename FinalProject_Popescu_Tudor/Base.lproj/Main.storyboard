@@ -62,6 +62,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="confirmBtn:" destination="hQ2-Tt-HMv" eventType="touchUpInside" id="tCd-ve-XF8"/>
+                                    <segue destination="Thd-Qy-Mpb" kind="show" identifier="addExpenseToHome" id="Zqv-4J-Acc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIM-wU-Alh">
@@ -75,6 +76,10 @@
                         <viewLayoutGuide key="safeArea" id="9C0-x6-Xza"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="9PH-VZ-7YG" id="F0M-QF-N0n"/>
+                        <outlet property="nameLabel" destination="rVE-7v-vao" id="FL0-8v-gjl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gID-27-12l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,6 +141,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="GOf-wh-7Wk"/>
+                    <navigationItem key="navigationItem" id="hiX-3H-6Yg"/>
                     <connections>
                         <outlet property="label1" destination="tcC-w0-eHu" id="riW-d8-IWS"/>
                     </connections>
@@ -393,6 +399,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Thd-Qy-Mpb" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="igV-3H-rr0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fPz-0J-enp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

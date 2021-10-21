@@ -8,8 +8,11 @@
 import UIKit
 
 
+
+
+
 struct Sections {
-    init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
+    init(title: String, options: [String], isOpened: Bool = false, titleAmount: String, optionsAmount: [String]) {
         self.title = title
         self.options = options
         self.isOpen = false
@@ -20,15 +23,17 @@ struct Sections {
     var title: String
     var options: [String]
     var isOpen: Bool
-    var titleAmount: Int
-    var optionsAmount: [Int]
+    var titleAmount: String
+    var optionsAmount: [String]
     
-    mutating func addOption(option: String){
+   
+    mutating func addSection(option: String, titleAmounts: String, optionsAmounts: String) {
         options.append(option)
+        titleAmount.append(titleAmounts)
+        optionsAmount.append(optionsAmounts)
         
         
     }
-    
     
 }
 let green2 = UIColor(hexString: "#DDFFBC")
@@ -39,11 +44,23 @@ var totalUpcomingExpenses: Int = 1680
 var totalCurrentExpenses: Int = 360
 
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, AddExpense{
+    func addExpenseItem(setOptions: String, setOptionsAmount: Int) {
+        sections.append(Sections(title: "Expense Paid", options: [setOptions], titleAmount: "\(setTitleAmount + totalCurrentExpenses)", optionsAmount: ["\(setOptionsAmount)"]))
+    }
+    
+    
+   
+    var setOptions: String = ""
+    var setTitleAmount: Int = 0
+    var setOptionsAmount: Int = 0
+    
+   
+    
     
     var sections = [
-                    Sections(title: "Expenses Remaining", options: ["Rent", "Car Payment", "Water Bill"], titleAmount: totalUpcomingExpenses, optionsAmount: [1200, 400, 80]),
-                    Sections(title: "Expenses Paid", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment"], titleAmount: totalCurrentExpenses, optionsAmount: [200, 80, 50])]
+                    Sections(title: "Expenses Remaining", options: ["Rent", "Car Payment", "Water Bill"], titleAmount: "\(totalUpcomingExpenses)", optionsAmount: ["1200", "400", "80"]),
+                    Sections(title: "Expenses Paid", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment"], titleAmount: "\(totalCurrentExpenses)", optionsAmount: ["200", "80", "50"])]
 
     override func viewDidLoad() {
         super.viewDidLoad()
