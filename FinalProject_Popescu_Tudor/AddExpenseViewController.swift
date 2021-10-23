@@ -26,7 +26,7 @@ class AddExpenseViewController: UIViewController{
             
             
             delegateExpense?.addExpenseItem(setOptions: nameLabel.text!, setOptionsAmount: amountText)
-            self.performSegue(withIdentifier: "addExpenseToHome", sender: nil)
+            self.dismiss(animated: true, completion: nil)
             
             
         }
@@ -45,7 +45,7 @@ class AddExpenseViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        if segue.identifier == "addExpenseToHome", let destination = segue.destination as? TableViewController{
+        if segue.identifier == "addExpenseToHome", let destination = segue.destination as? ViewController{
             guard let setOptions = self.nameLabel.text else {return}
             
             destination.setOptions = setOptions

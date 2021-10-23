@@ -7,6 +7,9 @@
 
 import UIKit
 
+
+//struct that holds the data
+
 struct Section {
     init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
         self.title = title
@@ -24,23 +27,37 @@ struct Section {
     
     mutating func addOption(option: String){
         options.append(option)
-        
-        
     }
-    
+    mutating func addOptionAmount(option: Int){
+        optionsAmount.append(option)
+    }
+    mutating func changeTitleAmount(option: Int){
+        titleAmount += option
+    }
     
 }
 
+// global variables
 
-let green4 = UIColor(hexString: "#C6E377")
-let green3 = UIColor(hexString: "#36622B")
+let red = UIColor(hexString: "#D32626")
+let green = UIColor(hexString: "#79D70F")
+let orange = UIColor(hexString: "#F5A31A")
 var totalIncome: Int = 3000
 var totalExpenses: Int = 2500
+var balanceAmount: Int = totalIncome - totalExpenses
+
+
+
 
 class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
+    
+    
+    // init sections and months
+    
+    
+    
     var sections = [Section(title: "Income", options: ["Salary", "Child Tax Credit"], titleAmount:totalIncome, optionsAmount: [2700, 300]),
-                    Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance", "Groceries"], titleAmount: totalExpenses, optionsAmount: [200, 80, 50, 1200, 400, 80, 490])]
+                    Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance", "Groceries"], titleAmount: totalExpenses, optionsAmount: [200, 80, 50, 1200, 400, 80, 490]), Section(title: "Balance", options: [], titleAmount: balanceAmount, optionsAmount: [])]
     
     let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
@@ -51,14 +68,149 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.allowsSelectionDuringEditing = true
     }
 
+    @IBOutlet weak var editBtnLabel: UIBarButtonItem!
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
         
         self.tableView.isEditing = !self.tableView.isEditing
         sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
     }
     
+    // Alert controller functions
+    
+    func presentAddIncome() {
+        let addIncomeCont = UIAlertController(title: "Add Income", message: nil, preferredStyle: .alert)
+        addIncomeCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Name"
+        }
+        addIncomeCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Amount"
+        }
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+            guard let textfield = addIncomeCont.textFields else {return}
+            
+            if let incomeText = textfield[0].text,
+               let amountText = Int(textfield[1].text!) {
+                
+                
+                if self.sections[1].isOpen == true && self.sections[0].isOpen == true{
+                    self.sections[0].addOption(option: incomeText)
+                    self.sections[0].addOptionAmount(option: amountText)
+                    self.sections[0].isOpen = false
+                    self.sections[1].isOpen = false
+                    self.tableView.reloadData()
+                    self.tableView.isEditing = false
+                    self.editBtnLabel.title = "Edit"
+                    self.sections[1].changeTitleAmount(option: amountText)
+                    self.sections[2].changeTitleAmount(option: +amountText)
+                    self.tableView.reloadSections([1], with: .none)
+                    self.tableView.reloadSections([2], with: .none)
+                
+                
+                } else {
+                self.sections[0].addOption(option: incomeText)
+                self.sections[0].addOptionAmount(option: amountText)
+                self.sections[0].isOpen = false
+                self.sections[1].isOpen = false
+                self.tableView.isEditing = false
+                self.editBtnLabel.title = "Edit"
+                self.sections[0].changeTitleAmount(option: amountText)
+                self.sections[2].changeTitleAmount(option: (+amountText))
+                self.tableView.reloadSections([0], with: .none)
+                self.tableView.reloadSections([2], with: .none)
+               
+                }}
+            
+        })
+       
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        addIncomeCont.addAction(confirmAction)
+        addIncomeCont.addAction(cancelAction)
+        self.present(addIncomeCont, animated: true, completion: nil)
+    }
+    
+    func presentAddExpense() {
+        
+        
+        
+        let addIncomeCont = UIAlertController(title: "Add Expense", message: nil, preferredStyle: .alert)
+        addIncomeCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Name"
+        }
+        addIncomeCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Amount"
+        }
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: {_ in
+            guard let textfield = addIncomeCont.textFields else {return}
+            
+            if  let incomeText = textfield[0].text,
+                let amountText = Int(textfield[1].text!) {
+                
+                if self.sections[1].isOpen == true && self.sections[0].isOpen == true{
+                    self.sections[1].addOption(option: incomeText)
+                    self.sections[1].addOptionAmount(option: amountText)
+                    self.sections[0].isOpen = false
+                    self.sections[1].isOpen = false
+                    self.tableView.reloadData()
+                    self.tableView.isEditing = false
+                    self.editBtnLabel.title = "Edit"
+                    self.sections[1].changeTitleAmount(option: amountText)
+                    self.sections[2].changeTitleAmount(option: -amountText)
+                    self.tableView.reloadSections([1], with: .none)
+                    self.tableView.reloadSections([2], with: .none)
+                
+                
+                } else {
+                    self.sections[1].addOption(option: incomeText)
+                    self.sections[1].addOptionAmount(option: amountText)
+                    self.sections[0].isOpen = false
+                    self.sections[1].isOpen = false
+                    self.tableView.isEditing = false
+                    self.editBtnLabel.title = "Edit"
+                    self.sections[1].changeTitleAmount(option: amountText)
+                    self.sections[2].changeTitleAmount(option: -amountText)
+                    self.tableView.reloadSections([1], with: .none)
+                    self.tableView.reloadSections([2], with: .none)
+                }
+            }
+            
+        })
+       
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        addIncomeCont.addAction(confirmAction)
+        addIncomeCont.addAction(cancelAction)
+        self.present(addIncomeCont, animated: true, completion: nil)
+    }
+    
+
+    //TableView functions
+    
+  
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.row != 0 {
+            return .delete
+        } else {
+            return .insert
+        }
+        
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        
+            
+        if (editingStyle == .insert){
+            if indexPath.section == 0 {
+                print("add income")
+                self.presentAddIncome()
+            } else if indexPath.section == 1 {
+                print("add expense")
+                self.presentAddExpense()
+            }
+        }
+
+
+
         if (editingStyle == .delete){
             sections[indexPath.section].options.remove(at: indexPath.item - 1)
             sections[indexPath.section].optionsAmount.remove(at: indexPath.item - 1)
@@ -66,15 +218,16 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+      
         return sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         let section = sections[section]
         
         if section.isOpen {
@@ -84,7 +237,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 {
+        if indexPath.section == 2 {
             return false
         }
          return true
@@ -100,16 +253,33 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            cell.backgroundColor = green3
-            cellName.textColor = green4
-            cellAmount.textColor = green4
+            if indexPath.section == 0 {
+                cell.backgroundColor = green
+            } else if indexPath.section == 1 {
+                cell.backgroundColor = red
+            } else {
+               
+                if self.sections[2].titleAmount == 0 {
+                    cell.backgroundColor = green
+                    
+                } else if self.sections[2].titleAmount < 0{
+                    cell.backgroundColor = red
+                    
+                } else {
+                    cell.backgroundColor = orange
+                }
+            }
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
             cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
-            cell.backgroundColor = green4
-            cellName.textColor = green3
-            cellAmount.textColor = green3
+            
+            if indexPath.section == 0 {
+                cell.backgroundColor = green.withAlphaComponent(0.5)
+            } else {
+                cell.backgroundColor = red.withAlphaComponent(0.5)
+            }
+            
             
            
         }
