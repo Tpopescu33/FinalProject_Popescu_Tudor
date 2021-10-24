@@ -75,6 +75,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.allowsSelectionDuringEditing = true
         
     }
+    
+    
 
     @IBOutlet weak var editBtnLabel: UIBarButtonItem!
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
@@ -116,21 +118,23 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
                     self.amountTexts = amountText
+                    self.sendData()
 
                 
                 } else {
-                self.sections[0].addOption(option: incomeText)
-                self.sections[0].addOptionAmount(option: amountText)
-                self.sections[0].isOpen = false
-                self.sections[1].isOpen = false
-                self.tableView.isEditing = false
-                self.editBtnLabel.title = "Edit"
-                self.sections[0].changeTitleAmount(option: amountText)
-                self.sections[2].changeTitleAmount(option: (+amountText))
-                self.tableView.reloadSections([0], with: .none)
-                self.tableView.reloadSections([2], with: .none)
-                self.amountTexts = amountText
-
+                    self.sections[0].addOption(option: incomeText)
+                    self.sections[0].addOptionAmount(option: amountText)
+                    self.sections[0].isOpen = false
+                    self.sections[1].isOpen = false
+                    self.tableView.isEditing = false
+                    self.editBtnLabel.title = "Edit"
+                    self.sections[0].changeTitleAmount(option: amountText)
+                    self.sections[2].changeTitleAmount(option: (+amountText))
+                    self.tableView.reloadSections([0], with: .none)
+                    self.tableView.reloadSections([2], with: .none)
+                    self.amountTexts = amountText
+                    self.sendData()
+                    
                
                 }
                 
@@ -182,6 +186,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.incomeTexts = incomeText
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
+                    self.sendData()
                 
                 
                 } else {
@@ -197,6 +202,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadSections([2], with: .none)
                     self.amountTexts = amountText
                     self.incomeTexts = incomeText
+                    self.sendData()
                 }
                 
                 
@@ -213,11 +219,16 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    override func viewDidDisappear(_ animated: Bool) {
-        let firstTab = self.tabBarController?.children[0] as! ViewController
-        firstTab.setOptionsAmount = amountTexts
+    func sendData() {
+       
+           
+        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+        let firstTab = Nav.topViewController as! ViewController
+     
+        
+        firstTab.setAmount = amountTexts
         firstTab.setOption = incomeTexts
-        firstTab.setTitleAmount = amountTexts
+       
         
         
     }

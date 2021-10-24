@@ -68,12 +68,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.sections[0].changeTitleAmount(option: setAmount)
+        
        
-        self.sections[1].addOption(option: setOptions)
-        self.sections[1].addOptionAmount(option: setAmount)
-        self.sections[1].changeTitleAmount(option: setAmount)
-        print(setAmount, setOptions)
+        
+        
+        
+        
+        
+        if (setOption != "" && setAmount != 0) {
+            
+            
+        
+            
+           
+            self.sections[1].addOption(option: setOption)
+            self.sections[1].addOptionAmount(option: setAmount)
+            self.sections[1].changeTitleAmount(option: setAmount)
+            self.tableView.reloadSections([1], with: .none)
+            self.tableView.reloadData()
+            
+        } else if (setAmount != 0) {
+            
+            
+            self.sections[0].changeTitleAmount(option: setAmount)
+            self.tableView.reloadData()
+            self.tableView.reloadSections([0], with: .none)
+            
+            
+        }
     }
     
     override func viewDidLoad() {
