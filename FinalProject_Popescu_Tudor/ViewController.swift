@@ -69,19 +69,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
-       
-        
-        
-        
-        
-        
         if (setOption != "" && setAmount != 0 && isExpense == true) {
-            
-            
-        
-            
-           
+      
             self.sections[1].addOption(option: setOption)
             self.sections[1].addOptionAmount(option: setAmount)
             self.sections[1].changeTitleAmount(option: setAmount)
@@ -90,17 +79,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else if (setAmount != 0 && isExpense == false) {
             
-            
             self.sections[0].changeTitleAmount(option: setAmount)
             self.tableView.reloadData()
             self.tableView.reloadSections([0], with: .none)
-            
             
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.allowsSelectionDuringEditing = true
         
       
        
