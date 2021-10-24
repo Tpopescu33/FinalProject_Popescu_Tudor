@@ -118,7 +118,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
                     self.amountTexts = amountText
-                    self.sendData()
+                    self.sendDataIncome()
 
                 
                 } else {
@@ -133,7 +133,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadSections([0], with: .none)
                     self.tableView.reloadSections([2], with: .none)
                     self.amountTexts = amountText
-                    self.sendData()
+                    self.sendDataIncome()
                     
                
                 }
@@ -186,7 +186,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.incomeTexts = incomeText
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
-                    self.sendData()
+                    self.sendDataExpense()
                 
                 
                 } else {
@@ -202,7 +202,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.tableView.reloadSections([2], with: .none)
                     self.amountTexts = amountText
                     self.incomeTexts = incomeText
-                    self.sendData()
+                    self.sendDataExpense()
                 }
                 
                 
@@ -219,16 +219,30 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func sendData() {
+    func sendDataExpense() {
        
            
         let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
         let firstTab = Nav.topViewController as! ViewController
-     
+        let isExpense = true
         
         firstTab.setAmount = amountTexts
         firstTab.setOption = incomeTexts
+        firstTab.isExpense = isExpense
+        
+        
+    }
+    
+    func sendDataIncome() {
        
+           
+        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+        let firstTab = Nav.topViewController as! ViewController
+        let isExpense = false
+        
+        firstTab.setAmount = amountTexts
+        
+        firstTab.isExpense = isExpense
         
         
     }

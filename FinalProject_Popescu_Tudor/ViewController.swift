@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var setBalanceAmount = 0
     var setOption = ""
     var setAmount = 0
+    var isExpense = false
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -75,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-        if (setOption != "" && setAmount != 0) {
+        if (setOption != "" && setAmount != 0 && isExpense == true) {
             
             
         
@@ -87,7 +88,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.reloadSections([1], with: .none)
             self.tableView.reloadData()
             
-        } else if (setAmount != 0) {
+        } else if (setAmount != 0 && isExpense == false) {
             
             
             self.sections[0].changeTitleAmount(option: setAmount)
