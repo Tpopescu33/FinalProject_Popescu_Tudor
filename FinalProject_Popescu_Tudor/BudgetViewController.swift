@@ -8,6 +8,9 @@
 import UIKit
 
 
+
+
+
 //struct that holds the data
 
 struct Section {
@@ -52,7 +55,11 @@ var balanceAmount: Int = totalIncome - totalExpenses
 class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     
+    
+    
     // init sections and months
+    
+    
     
     
     
@@ -66,6 +73,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelectionDuringEditing = true
+        
     }
 
     @IBOutlet weak var editBtnLabel: UIBarButtonItem!
@@ -74,6 +82,9 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.isEditing = !self.tableView.isEditing
         sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
     }
+    
+    var incomeTexts = ""
+    var amountTexts = 0
     
     // Alert controller functions
     
@@ -104,7 +115,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.sections[2].changeTitleAmount(option: +amountText)
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
-                
+                    self.amountTexts = amountText
+
                 
                 } else {
                 self.sections[0].addOption(option: incomeText)
@@ -117,16 +129,27 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.sections[2].changeTitleAmount(option: (+amountText))
                 self.tableView.reloadSections([0], with: .none)
                 self.tableView.reloadSections([2], with: .none)
+                self.amountTexts = amountText
+
                
-                }}
+                }
+                
+            
+              
+            }
             
         })
-       
+        
+        
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
         addIncomeCont.addAction(confirmAction)
         addIncomeCont.addAction(cancelAction)
         self.present(addIncomeCont, animated: true, completion: nil)
     }
+    
+    
+    
     
     func presentAddExpense() {
         
@@ -155,6 +178,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.editBtnLabel.title = "Edit"
                     self.sections[1].changeTitleAmount(option: amountText)
                     self.sections[2].changeTitleAmount(option: -amountText)
+                    self.amountTexts = amountText
+                    self.incomeTexts = incomeText
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
                 
@@ -170,7 +195,13 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.sections[2].changeTitleAmount(option: -amountText)
                     self.tableView.reloadSections([1], with: .none)
                     self.tableView.reloadSections([2], with: .none)
+                    self.amountTexts = amountText
+                    self.incomeTexts = incomeText
                 }
+                
+                
+                
+                
             }
             
         })
@@ -181,7 +212,17 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.present(addIncomeCont, animated: true, completion: nil)
     }
     
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let firstTab = self.tabBarController?.children[0] as! ViewController
+        firstTab.setOptionsAmount = amountTexts
+        firstTab.setOption = incomeTexts
+        firstTab.setTitleAmount = amountTexts
+        
+        
+    }
+    
+    
     //TableView functions
     
   

@@ -41,7 +41,14 @@ var totalIncomeRemaining: Int = 50
 var totalUpcomingExpenses: Int = 1680
 var totalCurrentExpenses: Int = 360
 
+var setOptions = ""
+var setAmount = 0
+var setBalanceAmount = 0
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+  
+    
     
   
     
@@ -55,15 +62,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    var setBalanceAmount = 0
+    var setOption = ""
+    var setAmount = 0
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.sections[0].changeTitleAmount(option: setAmount)
+       
+        self.sections[1].addOption(option: setOptions)
+        self.sections[1].addOptionAmount(option: setAmount)
+        self.sections[1].changeTitleAmount(option: setAmount)
+        print(setAmount, setOptions)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
       
-        
        
         
     }
     
+    
+   
     
    
     
