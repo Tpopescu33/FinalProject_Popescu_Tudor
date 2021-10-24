@@ -226,8 +226,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let firstTab = Nav.topViewController as! ViewController
         let isExpense = true
         
-        firstTab.setAmount = amountTexts
-        firstTab.setOption = incomeTexts
+        firstTab.setExpenseAmount.append(amountTexts)
+        firstTab.setExpenseOption.append(incomeTexts)
         firstTab.isExpense = isExpense
         
         
@@ -240,7 +240,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let firstTab = Nav.topViewController as! ViewController
         let isExpense = false
         
-        firstTab.setAmount = amountTexts
+        firstTab.setIncomeAmount.append(amountTexts)
         
         firstTab.isExpense = isExpense
         

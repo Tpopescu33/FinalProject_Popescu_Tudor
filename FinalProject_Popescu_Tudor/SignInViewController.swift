@@ -22,7 +22,11 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func SignUp(_ sender: Any) {
+        
+        self.presentSignUp()
     }
+    
+    
     
     
     func presentSignIn () {
@@ -61,12 +65,59 @@ class SignInViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    func presentSignUp () {
+        
+        let signUpCont = UIAlertController(title: "Sign In", message: nil, preferredStyle: .alert)
+        signUpCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Username"
+        }
+        signUpCont.addTextField{ (textfield) in
+            textfield.placeholder = "Enter Password"
+        }
+        
+        signUpCont.addTextField{ (textfield) in
+            textfield.placeholder = "Confirm Password"
+        }
+        
+        let signUpAction = UIAlertAction(title: "Sign Up", style: .default, handler: {_ in
+            guard let textfield = signUpCont.textFields else {return}
+            
+            let userName = textfield[0].text
+            let passWord = textfield[1].text
+            let confirmPassWord = textfield[2].text
+            
+            if  (userName?.count != 0 && passWord?.count != 0 && confirmPassWord?.count != 0) {
+                if confirmPassWord! == passWord! {
+                    self.loginDictionary[userName!] = passWord!
+                    self.performSegue(withIdentifier: "login", sender: self)
+                    print("\(self.loginDictionary)")
+                } else {
+                    return
+                }
+                
+            } else { return }
+                
+                
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        signUpCont.addAction(signUpAction)
+        signUpCont.addAction(cancelAction)
+        self.present(signUpCont, animated: true, completion: nil)
+        
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
 
     /*
     // MARK: - Navigation

@@ -63,27 +63,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var setBalanceAmount = 0
-    var setOption = ""
-    var setAmount = 0
+    var setExpenseOption: [String] = []
+    var setExpenseAmount: [Int] = []
+    var setIncomeAmount: [Int] = []
     var isExpense = false
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if (setOption != "" && setAmount != 0 && isExpense == true) {
-      
-            self.sections[1].addOption(option: setOption)
-            self.sections[1].addOptionAmount(option: setAmount)
-            self.sections[1].changeTitleAmount(option: setAmount)
+        if (setExpenseOption.count != 0 && setExpenseAmount.count != 0 ) {
+            
+           
+            
+            for i in 0..<(setExpenseAmount.count) {
+            
+            self.sections[1].addOption(option: setExpenseOption[i])
+            self.sections[1].addOptionAmount(option: setExpenseAmount[i])
+            self.sections[1].changeTitleAmount(option: setExpenseAmount[i])
             self.tableView.reloadSections([1], with: .none)
             self.tableView.reloadData()
+            }
             
-        } else if (setAmount != 0 && isExpense == false) {
+            setExpenseOption.removeAll()
             
-            self.sections[0].changeTitleAmount(option: setAmount)
-            self.tableView.reloadData()
-            self.tableView.reloadSections([0], with: .none)
+            setExpenseAmount.removeAll()
             
         }
+        
+        if (setIncomeAmount.count != 0) {
+            
+            let j = setIncomeAmount.count
+            
+            for i in 0...(j - 1) {
+            
+            self.sections[0].changeTitleAmount(option: setIncomeAmount[i])
+            self.tableView.reloadData()
+            self.tableView.reloadSections([0], with: .none)
+            }
+            setIncomeAmount.removeAll()
+        }
+        
+        
+
     }
     
     override func viewDidLoad() {
