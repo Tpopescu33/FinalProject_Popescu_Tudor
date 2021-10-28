@@ -264,11 +264,11 @@
             </objects>
             <point key="canvasLocation" x="386.91588785046724" y="198.92008639308855"/>
         </scene>
-        <!--Item-->
+        <!--Create Budget-->
         <scene sceneID="237-2D-l4B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4wM-zb-Dc4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rIq-F5-ofi"/>
+                    <tabBarItem key="tabBarItem" title="Create Budget" image="creditcard" catalog="system" id="rIq-F5-ofi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LFj-BV-Q1f">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -283,11 +283,11 @@
             </objects>
             <point key="canvasLocation" x="1422.8971962616822" y="651.83585313174956"/>
         </scene>
-        <!--Item-->
+        <!--Dashboard-->
         <scene sceneID="ufi-cy-dmS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MGV-30-7an" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GOf-wh-7Wk"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="homekit" catalog="system" id="GOf-wh-7Wk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CjY-wR-ggP">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -322,6 +322,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="creditcard" catalog="system" width="128" height="88"/>
+        <image name="homekit" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

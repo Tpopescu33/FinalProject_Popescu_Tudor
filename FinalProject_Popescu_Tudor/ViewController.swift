@@ -37,9 +37,9 @@ struct Sections {
 let green2 = UIColor(hexString: "#DDFFBC")
 let green1 = UIColor(hexString: "#91C788")
 
-var totalIncomeRemaining: Int = 50
-var totalUpcomingExpenses: Int = 1680
-var totalCurrentExpenses: Int = 360
+var totalIncomeRemaining: Int = 0
+var totalUpcomingExpenses: Int = 0
+var totalCurrentExpenses: Int = 0
 
 var setOptions = ""
 var setAmount = 0
@@ -130,8 +130,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     var sections = [Sections(title: "Balance Remaining", options: [], titleAmount: totalIncomeRemaining, optionsAmount: []),
-                    Sections(title: "Expenses Remaining", options: ["Rent", "Car Payment", "Water Bill"], titleAmount: totalUpcomingExpenses, optionsAmount: [1200, 400, 80]),
-                    Sections(title: "Expenses Paid", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment"], titleAmount: totalCurrentExpenses, optionsAmount: [200, 80, 50])]
+                    Sections(title: "Expenses Remaining", options: [], titleAmount: totalUpcomingExpenses, optionsAmount: []),
+                    Sections(title: "Expenses Paid", options: [], titleAmount: totalCurrentExpenses, optionsAmount: [])]
 
     // Alert Functions
     

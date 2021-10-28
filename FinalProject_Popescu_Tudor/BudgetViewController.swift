@@ -45,8 +45,8 @@ struct Section {
 let red = UIColor(hexString: "#D32626")
 let green = UIColor(hexString: "#79D70F")
 let orange = UIColor(hexString: "#F5A31A")
-var totalIncome: Int = 3000
-var totalExpenses: Int = 2500
+var totalIncome: Int = 0
+var totalExpenses: Int = 0
 var balanceAmount: Int = totalIncome - totalExpenses
 
 
@@ -63,8 +63,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     
-    var sections = [Section(title: "Income", options: ["Salary", "Child Tax Credit"], titleAmount:totalIncome, optionsAmount: [2700, 300]),
-                    Section(title: "Expenses", options: ["Electricity Bill", "Phone Bill", "Credit Card Payment", "Rent", "Car Payment", "Insurance", "Groceries"], titleAmount: totalExpenses, optionsAmount: [200, 80, 50, 1200, 400, 80, 490]), Section(title: "Balance", options: [], titleAmount: balanceAmount, optionsAmount: [])]
+    var sections = [Section(title: "Income", options: [], titleAmount:totalIncome, optionsAmount: []),
+                    Section(title: "Expenses", options: [], titleAmount: totalExpenses, optionsAmount: []), Section(title: "Balance", options: [], titleAmount: balanceAmount, optionsAmount: [])]
     
     let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
