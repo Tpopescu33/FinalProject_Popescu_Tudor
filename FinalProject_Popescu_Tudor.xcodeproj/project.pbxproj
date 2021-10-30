@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B13A1A0272B5447001C48B4 /* Model.xcdatamodeld */; };
 		8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B166510271CEFAA007E68C5 /* BudgetViewController.swift */; };
 		8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739B271B6D3300FFE204 /* AppDelegate.swift */; };
 		8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739D271B6D3300FFE204 /* SceneDelegate.swift */; };
@@ -17,6 +18,9 @@
 		8B2273B3271B6D3500FFE204 /* FinalProject_Popescu_TudorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273B2271B6D3500FFE204 /* FinalProject_Popescu_TudorTests.swift */; };
 		8B2273BD271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273BC271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift */; };
 		8B2273BF271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */; };
+		8B2E2E85272CBB4300B87569 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2E2E84272CBB4300B87569 /* CoreData.framework */; };
+		8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */; };
+		8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */; };
 		8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C7482725CC81008E9F99 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B13A1A1272B5447001C48B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8B166510271CEFAA007E68C5 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		8B227398271B6D3300FFE204 /* FinalProject_Popescu_Tudor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Popescu_Tudor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B22739B271B6D3300FFE204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +57,9 @@
 		8B2273B8271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject_Popescu_TudorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2273BC271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProject_Popescu_TudorUITests.swift; sourceTree = "<group>"; };
 		8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProject_Popescu_TudorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B2E2E84272CBB4300B87569 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B41C7482725CC81008E9F99 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2E2E85272CBB4300B87569 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +96,7 @@
 				8B2273B1271B6D3500FFE204 /* FinalProject_Popescu_TudorTests */,
 				8B2273BB271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests */,
 				8B227399271B6D3300FFE204 /* Products */,
+				8B2E2E83272CBB4300B87569 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,9 +113,11 @@
 		8B22739A271B6D3300FFE204 /* FinalProject_Popescu_Tudor */ = {
 			isa = PBXGroup;
 			children = (
+				8B2E2E8E272CC05600B87569 /* LoginDictionary */,
 				8B22739B271B6D3300FFE204 /* AppDelegate.swift */,
 				8B22739D271B6D3300FFE204 /* SceneDelegate.swift */,
 				8B22739F271B6D3300FFE204 /* ViewController.swift */,
+				8B13A1A0272B5447001C48B4 /* Model.xcdatamodeld */,
 				8B2273A1271B6D3300FFE204 /* Main.storyboard */,
 				8B2273A4271B6D3500FFE204 /* Assets.xcassets */,
 				8B2273A6271B6D3500FFE204 /* LaunchScreen.storyboard */,
@@ -131,6 +143,23 @@
 				8B2273BE271B6D3500FFE204 /* FinalProject_Popescu_TudorUITestsLaunchTests.swift */,
 			);
 			path = FinalProject_Popescu_TudorUITests;
+			sourceTree = "<group>";
+		};
+		8B2E2E83272CBB4300B87569 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E2E84272CBB4300B87569 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B2E2E8E272CC05600B87569 /* LoginDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */,
+				8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */,
+			);
+			path = LoginDictionary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +297,10 @@
 				8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */,
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */,
+				8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */,
+				8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */,
 				8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */,
+				8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +664,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8B13A1A0272B5447001C48B4 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8B13A1A1272B5447001C48B4 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8B13A1A1272B5447001C48B4 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8B227390271B6D3300FFE204 /* Project object */;
 }

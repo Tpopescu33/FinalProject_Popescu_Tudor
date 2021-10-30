@@ -89,9 +89,9 @@ class SignInViewController: UIViewController {
             
             if  (userName?.count != 0 && passWord?.count != 0 && confirmPassWord?.count != 0) {
                 if confirmPassWord! == passWord! {
-                    self.loginDictionary[userName!] = passWord!
+                    self.createEntry(userName: userName! ,passWord: passWord!)
                     self.performSegue(withIdentifier: "login", sender: self)
-                    print("\(self.loginDictionary)")
+                    
                 } else {
                     return
                 }
@@ -111,13 +111,52 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDictionary()
         self.navigationController?.isNavigationBarHidden = true
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
+        getDictionary()
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    // CORE DATA //
+    
+    
+    func getDictionary() {
+        do {
+            let items = try context.fetch(LoginDictionary.fetchRequest())
+            for i in 0..<items.count {
+                loginDictionary = items[i].dictionary!
+            }
+        } catch {
+            //error
+        }
+        
+    }
+    
+    func createEntry(userName: String, passWord: String) {
+        
+        let newItem = LoginDictionary(context: context)
+        newItem.dictionary = [userName : passWord]
+        
+        do {
+            try context.save()
+        } catch {
+            
+        }
+        
+    }
+    
+   
+    
+    
+    
+   
+}
+
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     /*
     // MARK: - Navigation
@@ -129,4 +168,4 @@ class SignInViewController: UIViewController {
     }
     */
 
-}
+
