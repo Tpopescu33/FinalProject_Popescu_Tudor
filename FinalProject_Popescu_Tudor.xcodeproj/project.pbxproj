@@ -22,6 +22,8 @@
 		8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */; };
 		8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */; };
 		8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C7482725CC81008E9F99 /* SignInViewController.swift */; };
+		8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DC7272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift */; };
+		8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B41C7482725CC81008E9F99 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8BCC0DC7272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeTable+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeTable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		8B22739A271B6D3300FFE204 /* FinalProject_Popescu_Tudor */ = {
 			isa = PBXGroup;
 			children = (
+				8BCC0DCB272DF09300EE1F15 /* IncomeTable */,
 				8B2E2E8E272CC05600B87569 /* LoginDictionary */,
 				8B22739B271B6D3300FFE204 /* AppDelegate.swift */,
 				8B22739D271B6D3300FFE204 /* SceneDelegate.swift */,
@@ -160,6 +165,15 @@
 				8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */,
 			);
 			path = LoginDictionary;
+			sourceTree = "<group>";
+		};
+		8BCC0DCB272DF09300EE1F15 /* IncomeTable */ = {
+			isa = PBXGroup;
+			children = (
+				8BCC0DC7272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift */,
+				8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */,
+			);
+			path = IncomeTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,9 +312,11 @@
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */,
 				8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */,
+				8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */,
 				8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */,
 				8B22739E271B6D3300FFE204 /* SceneDelegate.swift in Sources */,
 				8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */,
+				8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
