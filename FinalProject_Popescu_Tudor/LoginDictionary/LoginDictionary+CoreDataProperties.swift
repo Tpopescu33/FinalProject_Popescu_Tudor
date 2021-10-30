@@ -16,7 +16,9 @@ extension LoginDictionary {
         return NSFetchRequest<LoginDictionary>(entityName: "LoginDictionary")
     }
 
-    @NSManaged public var dictionary: [String:String]?
+    @NSManaged public var userName: String?
+    @NSManaged public var passWord: String?
+    
 
 }
 

@@ -46,11 +46,28 @@ class SignInViewController: UIViewController {
             let passWord = textfield[1].text
             
             if  (userName?.count != 0 && passWord?.count != 0) {
-                if self.loginDictionary[userName!] == passWord! {
-                    self.performSegue(withIdentifier: "login", sender: self)
-                } else {
-                    return
+                
+                
+                
+                do {
+                    let items = try context.fetch(LoginDictionary.fetchRequest())
+                    for i in 0..<items.count {
+                        self.loginDictionary[items[i].userName!] = items[i].passWord
+                        
+                        if self.loginDictionary[userName!] == passWord! {
+                            self.performSegue(withIdentifier: "login", sender: self)
+                            print("matches")
+                        } else {
+                            return
+                        }
+                        
+                    } } catch {
+                    print("error")
                 }
+                
+                
+                
+                
                 
             } else { return }
                 
@@ -128,8 +145,11 @@ class SignInViewController: UIViewController {
         do {
             let items = try context.fetch(LoginDictionary.fetchRequest())
             for i in 0..<items.count {
-                loginDictionary = items[i].dictionary!
+                loginDictionary[items[i].userName!] = items[i].passWord
+
             }
+            
+            print(items, items.count, loginDictionary)
         } catch {
             //error
         }
@@ -139,12 +159,25 @@ class SignInViewController: UIViewController {
     func createEntry(userName: String, passWord: String) {
         
         let newItem = LoginDictionary(context: context)
-        newItem.dictionary = [userName : passWord]
+        newItem.userName = userName
+        newItem.passWord = passWord
         
         do {
             try context.save()
         } catch {
             
+        }
+        
+    }
+    
+    func deleteEntry (item: LoginDictionary) {
+        
+        context.delete(item)
+        
+        do{
+            try context.save()
+        } catch {
+            //error
         }
         
     }
