@@ -55,7 +55,12 @@ var balanceAmount: Int = totalIncome - totalExpenses
 class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     // CORE DATA //
-    
+    func getBalance() {
+        balanceAmount = sections[0].titleAmount - sections[1].titleAmount
+        sections[2].titleAmount = 0
+        sections[2].changeTitleAmount(option: balanceAmount)
+        self.tableView.reloadData()
+    }
     
     func getTable() {
         do {
@@ -73,6 +78,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     sections[0].changeTitleAmount(option: items[i].optionAmount)
                 }
                 self.tableView.reloadData()
+                getBalance()
             }
             
 
@@ -98,6 +104,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     sections[1].changeTitleAmount(option: items[i].optionAmount)
                 }
                 self.tableView.reloadData()
+                getBalance()
             }
             
 
@@ -147,7 +154,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func deleteIncomeEntry(item: ExpenseTable) {
+    func deleteExpenseEntry(item: ExpenseTable) {
         context.delete(item)
         
         do {
@@ -214,39 +221,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.createIncomeEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
                 self.getTable()
                 
-//                if self.sections[1].isOpen == true && self.sections[0].isOpen == true{
-//                    self.sections[0].addOption(option: incomeText)
-//                    self.sections[0].addOptionAmount(option: amountText)
-//                    self.sections[0].isOpen = false
-//                    self.sections[1].isOpen = false
-//                    self.tableView.reloadData()
-//                    self.tableView.isEditing = false
-//                    self.editBtnLabel.title = "Edit"
-//                    self.sections[1].changeTitleAmount(option: amountText)
-//                    self.sections[2].changeTitleAmount(option: +amountText)
-//                    self.tableView.reloadSections([1], with: .none)
-//                    self.tableView.reloadSections([2], with: .none)
-//                    self.amountTexts = amountText
-//                    self.sendDataIncome()
-//
-//
-//                } else {
-//                    self.sections[0].addOption(option: incomeText)
-//                    self.sections[0].addOptionAmount(option: amountText)
-//                    self.sections[0].isOpen = false
-//                    self.sections[1].isOpen = false
-//                    self.tableView.isEditing = false
-//                    self.editBtnLabel.title = "Edit"
-//                    self.sections[0].changeTitleAmount(option: amountText)
-//                    self.sections[2].changeTitleAmount(option: (+amountText))
-//                    self.tableView.reloadSections([0], with: .none)
-//                    self.tableView.reloadSections([2], with: .none)
-//                    self.amountTexts = amountText
-//                    self.sendDataIncome()
-//
-//
-//                }
-//
+
             
               
             }
@@ -285,39 +260,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 self.createExpenseEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
                 self.getTableExp()
-//                if self.sections[1].isOpen == true && self.sections[0].isOpen == true{
-//                    self.sections[1].addOption(option: incomeText)
-//                    self.sections[1].addOptionAmount(option: amountText)
-//                    self.sections[0].isOpen = false
-//                    self.sections[1].isOpen = false
-//                    self.tableView.reloadData()
-//                    self.tableView.isEditing = false
-//                    self.editBtnLabel.title = "Edit"
-//                    self.sections[1].changeTitleAmount(option: amountText)
-//                    self.sections[2].changeTitleAmount(option: -amountText)
-//                    self.amountTexts = amountText
-//                    self.incomeTexts = incomeText
-//                    self.tableView.reloadSections([1], with: .none)
-//                    self.tableView.reloadSections([2], with: .none)
-//                    self.sendDataExpense()
-//
-//
-//                } else {
-//                    self.sections[1].addOption(option: incomeText)
-//                    self.sections[1].addOptionAmount(option: amountText)
-//                    self.sections[0].isOpen = false
-//                    self.sections[1].isOpen = false
-//                    self.tableView.isEditing = false
-//                    self.editBtnLabel.title = "Edit"
-//                    self.sections[1].changeTitleAmount(option: amountText)
-//                    self.sections[2].changeTitleAmount(option: -amountText)
-//                    self.tableView.reloadSections([1], with: .none)
-//                    self.tableView.reloadSections([2], with: .none)
-//                    self.amountTexts = amountText
-//                    self.incomeTexts = incomeText
-//                    self.sendDataExpense()
-//                }
-                
+
                 
                 
                 
@@ -337,11 +280,9 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
         let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
         let firstTab = Nav.topViewController as! ViewController
-        let isExpense = true
         
-        firstTab.setExpenseAmount.append(amountTexts)
-        firstTab.setExpenseOption.append(incomeTexts)
-        firstTab.isExpense = isExpense
+        
+        firstTab.monthNo = monthNo
         
         
     }
@@ -351,11 +292,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
         let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
         let firstTab = Nav.topViewController as! ViewController
-        let isExpense = false
         
-        firstTab.setIncomeAmount.append(amountTexts)
         
-        firstTab.isExpense = isExpense
+        
+        
+        firstTab.monthNo = monthNo
         
         
     }
@@ -391,11 +332,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
         if (editingStyle == .delete){
-//            sections[indexPath.section].options.remove(at: indexPath.item - 1)
-//            sections[indexPath.section].optionsAmount.remove(at: indexPath.item - 1)
+
 
             if indexPath.section == 0 {
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
+
             do {
             let items = try context.fetch(IncomeTable.fetchRequest())
                 let item = items[indexPath.row-1]
@@ -409,7 +349,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 do {
                 let items = try context.fetch(ExpenseTable.fetchRequest())
                     let item = items[indexPath.row-1]
-                    deleteIncomeEntry(item: item)
+                    deleteExpenseEntry(item: item)
                     getTableExp()
                 }
                 catch{

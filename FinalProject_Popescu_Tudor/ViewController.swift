@@ -47,9 +47,80 @@ var setBalanceAmount = 0
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    
+    var monthNo: Int = 0
   
     
+    // CORE DATA //
     
+   
+    
+    func getExpPaid() {
+        do {
+            let items = try context.fetch(ExpPaid.fetchRequest())
+            
+            print(items.count)
+            
+            self.sections[2].optionsAmount.removeAll()
+            self.sections[2].options.removeAll()
+            self.sections[2].titleAmount = 0
+            for i in 0..<items.count {
+                if (items.count != 0) {
+                    sections[2].addOption(option: items[i].option!)
+                    sections[2].addOptionAmount(option: items[i].optionAmount)
+                    sections[2].changeTitleAmount(option: items[i].optionAmount)
+                }
+                self.tableView.reloadData()
+                
+            }
+            
+
+        } catch {
+            //error
+        }
+        
+    }
+    
+    func createPaidEntry(option: String, optionAmount: Int, month: Int) {
+        let newItem = ExpPaid(context: context)
+        newItem.option = option
+        newItem.optionAmount = optionAmount
+        newItem.month = monthNo
+        
+        do {
+            try context.save()
+            getExpPaid()
+        } catch {
+            //error
+        }
+
+    }
+    
+    func deleteRemainingEntry(item: ExpRemaining) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+        } catch {
+            //error
+        }
+    }
+    
+    func deletePaidEntry(item: ExpPaid) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+        } catch {
+            //error
+        }
+    }
+    
+    
+    
+    
+    
+    ////
   
     
     
@@ -70,38 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if (setExpenseOption.count != 0 && setExpenseAmount.count != 0 ) {
-            
-           
-            
-            for i in 0..<(setExpenseAmount.count) {
-            
-            self.sections[1].addOption(option: setExpenseOption[i])
-            self.sections[1].addOptionAmount(option: setExpenseAmount[i])
-            self.sections[1].changeTitleAmount(option: setExpenseAmount[i])
-            self.tableView.reloadSections([1], with: .none)
-            self.tableView.reloadData()
-            }
-            
-            setExpenseOption.removeAll()
-            
-            setExpenseAmount.removeAll()
-            
-        }
-        
-        if (setIncomeAmount.count != 0) {
-            
-            let j = setIncomeAmount.count
-            
-            for i in 0...(j - 1) {
-            
-            self.sections[0].changeTitleAmount(option: setIncomeAmount[i])
-            self.tableView.reloadData()
-            self.tableView.reloadSections([0], with: .none)
-            }
-            setIncomeAmount.removeAll()
-        }
-        
+     getExpPaid()
         
 
     }
@@ -109,6 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelectionDuringEditing = true
+        getExpPaid()
         
       
        
@@ -155,39 +196,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let textfield = addExpenseCont.textFields else {return}
             
             if  let incomeText = textfield[0].text,
-                let amountText = Int(textfield[1].text!),
-                let index = self.sections[1].options.firstIndex(where: {$0 == incomeText}) {
+                let amountText = Int(textfield[1].text!){
                 
+                self.createPaidEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
+                self.getExpPaid()
                 
                 
                
                 
                 
-                    self.sections[2].addOption(option: incomeText)
-                    self.sections[2].addOptionAmount(option: amountText)
-                    self.sections[0].isOpen = false
-                    self.sections[1].isOpen = false
-                    self.tableView.reloadData()
-                    self.tableView.isEditing = false
-                    self.editBtn.title = "Edit"
-                    self.sections[2].changeTitleAmount(option: amountText)
-                    self.sections[1].changeTitleAmount(option: -amountText)
-                    self.sections[0].changeTitleAmount(option: -amountText)
-                    self.tableView.reloadSections([1], with: .none)
-                    self.tableView.reloadSections([2], with: .none)
-                    self.tableView.reloadSections([0], with: .none)
-                if (self.sections[1].options.contains(incomeText) && self.sections[1].optionsAmount[index] == amountText){
-                    
-                    self.sections[1].options.remove(at: index)
-                    self.sections[1].optionsAmount.remove(at: index)
-                    self.tableView.reloadData()
-                } else if (self.sections[1].options.contains(incomeText)) {
-                    let tempAmount = self.sections[1].optionsAmount[index]
-                    self.sections[1].optionsAmount.remove(at: index)
-                    self.sections[1].optionsAmount.insert(tempAmount - amountText, at: index)
-                    self.tableView.reloadData()
-                    
-                }
                 
                 
             }
@@ -204,6 +221,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     // TableView Functions
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        
+            
+//        if (editingStyle == .insert){
+//            if indexPath.section == 0 {
+//                print("add income")
+//                self.presentAddIncome()
+//            } else if indexPath.section == 1 {
+//                print("add expense")
+//                self.presentAddExpense()
+//            }
+//        }
+
+
+
+        if (editingStyle == .delete){
+
+
+            if indexPath.section == 1 {
+
+            do {
+            let items = try context.fetch(ExpRemaining.fetchRequest())
+                let item = items[indexPath.row-1]
+                deleteRemainingEntry(item: item)
+                getExpPaid() 
+            }
+            catch{
+                
+            }} else if indexPath.section == 2 {
+                
+                do {
+                let items = try context.fetch(ExpPaid.fetchRequest())
+                    let item = items[indexPath.row-1]
+                    deletePaidEntry(item: item)
+                    getExpPaid()
+                }
+                catch{
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row != 0 {

@@ -26,6 +26,10 @@
 		8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */; };
 		8BCC0DCE272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DCC272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift */; };
 		8BCC0DCF272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DCD272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift */; };
+		8BCC0DD3272E1E5300EE1F15 /* ExpRemaining+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD1272E1E5200EE1F15 /* ExpRemaining+CoreDataClass.swift */; };
+		8BCC0DD4272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */; };
+		8BCC0DD8272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */; };
+		8BCC0DD9272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeTable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BCC0DCC272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseTable+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BCC0DCD272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseTable+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BCC0DD1272E1E5200EE1F15 /* ExpRemaining+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpRemaining+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpRemaining+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,8 @@
 		8B22739A271B6D3300FFE204 /* FinalProject_Popescu_Tudor */ = {
 			isa = PBXGroup;
 			children = (
+				8BCC0DDA272E1ED200EE1F15 /* ExpPaid */,
+				8BCC0DD5272E1E5C00EE1F15 /* ExpRemaining */,
 				8BCC0DD0272E164400EE1F15 /* ExpenseTable */,
 				8BCC0DCB272DF09300EE1F15 /* IncomeTable */,
 				8B2E2E8E272CC05600B87569 /* LoginDictionary */,
@@ -188,6 +198,24 @@
 				8BCC0DCD272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift */,
 			);
 			path = ExpenseTable;
+			sourceTree = "<group>";
+		};
+		8BCC0DD5272E1E5C00EE1F15 /* ExpRemaining */ = {
+			isa = PBXGroup;
+			children = (
+				8BCC0DD1272E1E5200EE1F15 /* ExpRemaining+CoreDataClass.swift */,
+				8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */,
+			);
+			path = ExpRemaining;
+			sourceTree = "<group>";
+		};
+		8BCC0DDA272E1ED200EE1F15 /* ExpPaid */ = {
+			isa = PBXGroup;
+			children = (
+				8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */,
+				8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */,
+			);
+			path = ExpPaid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,10 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCC0DD8272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift in Sources */,
 				8B2273A0271B6D3300FFE204 /* ViewController.swift in Sources */,
+				8BCC0DD9272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift in Sources */,
 				8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */,
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */,
+				8BCC0DD4272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift in Sources */,
 				8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */,
 				8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */,
 				8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */,
@@ -333,6 +364,7 @@
 				8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */,
 				8BCC0DCE272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift in Sources */,
 				8BCC0DCF272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift in Sources */,
+				8BCC0DD3272E1E5300EE1F15 /* ExpRemaining+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
