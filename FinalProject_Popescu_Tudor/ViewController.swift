@@ -33,6 +33,9 @@ struct Sections {
     mutating func changeTitleAmount(option: Int){
         titleAmount += option
     }
+    mutating func changeOptionAmount(option: Int){
+        optionsAmount[0] += option
+    }
     
 }
 let green2 = UIColor(hexString: "#DDFFBC")
@@ -182,6 +185,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+    func checkRemainingEntry(option: String, optionAmount: Int, month: Int){
+        let title = option
+        let titleAmount = optionAmount
+        let fetchReq: NSFetchRequest<ExpRemaining>
+        fetchReq = ExpRemaining.fetchRequest()
+        
+        let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
+        let monthPredicate = NSPredicate(format: "month LIKE %@", "\(self.monthNo)")
+        
+        fetchReq.predicate = NSCompoundPredicate(
+           andPredicateWithSubpredicates: [namePredicate, monthPredicate]
+        )
+        
+        self.sections[1].titleAmount = 0
+        self.sections[1].optionsAmount[0] = 0
+        
+        do {
+            let items = try context.fetch(fetchReq)
+            
+            print(items.count)
+            self.tableView.reloadData()
+          
+           
+                if (items.count != 0) {
+                    
+                    
+                    
+                    updateRemainingEntry(item: items[0], newOptionAmount: items[0].optionAmount - titleAmount)
+                    sections[1].changeTitleAmount(option: items[0].optionAmount - titleAmount)
+                
+                   
+                getExpRemaining()
+                self.tableView.reloadData()
+                
+            }
+            
+
+        } catch {
+            //error
+        }
+        
+    }
+    
     func deleteRemainingEntry(item: ExpRemaining) {
         context.delete(item)
         
@@ -202,7 +248,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
+    func updateRemainingEntry(item: ExpRemaining, newOptionAmount: Int){
+        item.optionAmount = newOptionAmount
+        do {
+            try context.save()
+        } catch {
+            //error
+        }
+    }
     
     
     
@@ -287,6 +340,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let amountText = Int(textfield[1].text!){
                 
                 self.createPaidEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
+                self.checkRemainingEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
                 self.getExpPaid()
                 self.getBalance()
                 
@@ -346,6 +400,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let items = try context.fetch(ExpPaid.fetchRequest())
                     let item = items[indexPath.row-1]
                     deletePaidEntry(item: item)
+                    
                     getExpPaid()
                     getBalance()
                 }
