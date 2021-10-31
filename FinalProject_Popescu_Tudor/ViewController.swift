@@ -141,7 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         
-     getExpPaid()
+    
         
 
     }
@@ -247,7 +247,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let items = try context.fetch(ExpRemaining.fetchRequest())
                 let item = items[indexPath.row-1]
                 deleteRemainingEntry(item: item)
-                getExpPaid() 
+                getExpPaid()
             }
             catch{
                 

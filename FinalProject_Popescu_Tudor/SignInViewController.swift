@@ -133,10 +133,7 @@ class SignInViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        getDictionary()
-        self.navigationController?.isNavigationBarHidden = true
-    }
+    
     
     // CORE DATA //
     

@@ -275,31 +275,31 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func sendDataExpense() {
-       
-           
-        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
-        let firstTab = Nav.topViewController as! ViewController
-        
-        
-        firstTab.monthNo = monthNo
-        
-        
-    }
-    
-    func sendDataIncome() {
-       
-           
-        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
-        let firstTab = Nav.topViewController as! ViewController
-        
-        
-        
-        
-        firstTab.monthNo = monthNo
-        
-        
-    }
+//    func sendDataExpense() {
+//       
+//           
+//        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+//        let firstTab = Nav.topViewController as! ViewController
+//        
+//        
+//        firstTab.monthNo = monthNo
+//        
+//        
+//    }
+//    
+//    func sendDataIncome() {
+//       
+//           
+//        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+//        let firstTab = Nav.topViewController as! ViewController
+//        
+//        
+//        
+//        
+//        firstTab.monthNo = monthNo
+//        
+//        
+//    }
     
     
     //TableView functions
