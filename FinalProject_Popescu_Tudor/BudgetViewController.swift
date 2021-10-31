@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 
@@ -14,7 +15,7 @@ import UIKit
 //struct that holds the data
 
 struct Section {
-    init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
+    init(title: String, options: [String], isOpen: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
         self.title = title
         self.options = options
         self.isOpen = false
@@ -63,14 +64,26 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getTable() {
+        
+        let fetchReq: NSFetchRequest<IncomeTable>
+        fetchReq = IncomeTable.fetchRequest()
+        
+        fetchReq.predicate = NSPredicate(
+        format: "month LIKE %@", "\(monthNo)"
+        )
+        
+        self.sections[0].optionsAmount.removeAll()
+        self.sections[0].options.removeAll()
+        self.sections[0].titleAmount = 0
+        self.tableView.reloadData()
+        
+        
         do {
-            let items = try context.fetch(IncomeTable.fetchRequest())
+            let items = try context.fetch(fetchReq)
             
             print(items.count)
             
-            self.sections[0].optionsAmount.removeAll()
-            self.sections[0].options.removeAll()
-            self.sections[0].titleAmount = 0
+            
             for i in 0..<items.count {
                 if (items.count != 0) {
                     sections[0].addOption(option: items[i].option!)
@@ -89,25 +102,35 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getTableExp() {
+        let fetchReqExp: NSFetchRequest<ExpenseTable>
+        fetchReqExp = ExpenseTable.fetchRequest()
+        
+        fetchReqExp.predicate = NSPredicate(
+        format: "month LIKE %@", "\(monthNo)"
+        )
+        
+        self.sections[1].optionsAmount.removeAll()
+        self.sections[1].options.removeAll()
+        self.sections[1].titleAmount = 0
+        self.tableView.reloadData()
+        
         do {
-            let items = try context.fetch(ExpenseTable.fetchRequest())
+            let items = try context.fetch(fetchReqExp)
             
             print(items.count)
             
-            self.sections[1].optionsAmount.removeAll()
-            self.sections[1].options.removeAll()
-            self.sections[1].titleAmount = 0
+            
             for i in 0..<items.count {
                 if (items.count != 0) {
                     sections[1].addOption(option: items[i].option!)
                     sections[1].addOptionAmount(option: items[i].optionAmount)
                     sections[1].changeTitleAmount(option: items[i].optionAmount)
                 }
-                self.tableView.reloadData()
-                getBalance()
+                
             }
             
-
+            self.tableView.reloadData()
+            getBalance()
         } catch {
             //error
         }
@@ -129,8 +152,24 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
+    
+    
     func createExpenseEntry(option: String, optionAmount: Int, month: Int) {
         let newItem = ExpenseTable(context: context)
+        newItem.option = option
+        newItem.optionAmount = optionAmount
+        newItem.month = monthNo
+        
+        do {
+            try context.save()
+            getTable()
+        } catch {
+            //error
+        }
+
+    }
+    func createExpenseEntry2(option: String, optionAmount: Int, month: Int) {
+        let newItem = ExpRemaining(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
@@ -146,15 +185,26 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteIncomeEntry(item: IncomeTable) {
         context.delete(item)
+        sections[0].isOpen = false
         
         do {
             try context.save()
+            
         } catch {
             //error
         }
     }
     
     func deleteExpenseEntry(item: ExpenseTable) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+                    } catch {
+            //error
+        }
+    }
+    func deleteExpenseEntry2(item: ExpRemaining) {
         context.delete(item)
         
         do {
@@ -219,9 +269,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 
                 self.createIncomeEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
-                self.getTable()
                 
-
+                
+                self.getTable()
+                self.sendDataIncome()
+                
             
               
             }
@@ -259,8 +311,9 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 
                 self.createExpenseEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
+                self.createExpenseEntry2(option: incomeText, optionAmount: amountText, month: self.monthNo)
                 self.getTableExp()
-
+                self.sendDataExpense()
                 
                 
                 
@@ -275,31 +328,31 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-//    func sendDataExpense() {
-//       
-//           
-//        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
-//        let firstTab = Nav.topViewController as! ViewController
-//        
-//        
-//        firstTab.monthNo = monthNo
-//        
-//        
-//    }
-//    
-//    func sendDataIncome() {
-//       
-//           
-//        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
-//        let firstTab = Nav.topViewController as! ViewController
-//        
-//        
-//        
-//        
-//        firstTab.monthNo = monthNo
-//        
-//        
-//    }
+    func sendDataExpense() {
+
+
+        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+        let firstTab = Nav.topViewController as! ViewController
+
+
+        firstTab.monthNo = monthNo
+        
+
+    }
+
+    func sendDataIncome() {
+
+
+        let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+        let firstTab = Nav.topViewController as! ViewController
+
+
+
+        
+        firstTab.monthNo = monthNo
+        firstTab.setIncomeAmount = totalIncome
+
+    }
     
     
     //TableView functions
@@ -340,7 +393,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let items = try context.fetch(IncomeTable.fetchRequest())
                 let item = items[indexPath.row-1]
                 deleteIncomeEntry(item: item)
+                sections[0].isOpen = false
                 getTable()
+                
+               
+               
+                
             }
             catch{
                 
@@ -350,6 +408,17 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let items = try context.fetch(ExpenseTable.fetchRequest())
                     let item = items[indexPath.row-1]
                     deleteExpenseEntry(item: item)
+                    
+                    getTableExp()
+                }
+                catch{
+                    
+                }
+                do {
+                let items = try context.fetch(ExpRemaining.fetchRequest())
+                    let item = items[indexPath.row-1]
+                    deleteExpenseEntry2(item: item)
+                    
                     getTableExp()
                 }
                 catch{
@@ -462,6 +531,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 self.monthLabel.text = "\(self.months[i])"
                 self.monthNo = i
+                self.getTable()
+                self.getTableExp()
+                self.getBalance()
+                print(self.monthNo)
                 
             }))
         }

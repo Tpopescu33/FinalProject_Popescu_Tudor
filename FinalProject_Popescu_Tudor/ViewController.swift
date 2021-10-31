@@ -48,12 +48,41 @@ var setBalanceAmount = 0
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     
+    
+    
     var monthNo: Int = 0
   
     
     // CORE DATA //
     
-   
+    func getExpRemaining() {
+        do {
+            let items = try context.fetch(ExpRemaining.fetchRequest())
+            
+            print(items.count)
+            
+            self.sections[1].optionsAmount.removeAll()
+            self.sections[1].options.removeAll()
+            self.sections[1].titleAmount = 0
+            for i in 0..<items.count {
+                if (items.count != 0) {
+                    sections[1].addOption(option: items[i].option!)
+                    sections[1].addOptionAmount(option: items[i].optionAmount)
+                    sections[1].changeTitleAmount(option: items[i].optionAmount)
+                }
+                self.tableView.reloadData()
+                
+            }
+            
+
+        } catch {
+            //error
+        }
+            
+       
+        
+        
+    }
     
     func getExpPaid() {
         do {
@@ -70,6 +99,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     sections[2].addOptionAmount(option: items[i].optionAmount)
                     sections[2].changeTitleAmount(option: items[i].optionAmount)
                 }
+                
+                
                 self.tableView.reloadData()
                 
             }
@@ -133,15 +164,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    var setBalanceAmount = 0
+    
     var setExpenseOption: [String] = []
     var setExpenseAmount: [Int] = []
-    var setIncomeAmount: [Int] = []
+    var setIncomeAmount: Int = 0
     var isExpense = false
     
     override func viewDidAppear(_ animated: Bool) {
         
-    
+     getExpPaid()
+     getExpRemaining()
         
 
     }
@@ -150,7 +182,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.tableView.allowsSelectionDuringEditing = true
         getExpPaid()
-        
+        getExpRemaining()
       
        
         

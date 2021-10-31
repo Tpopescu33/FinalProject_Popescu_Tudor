@@ -274,6 +274,7 @@
         <!--Create Budget-->
         <scene sceneID="237-2D-l4B">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6C-lr-nZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4wM-zb-Dc4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create Budget" image="creditcard" catalog="system" id="rIq-F5-ofi"/>
                     <toolbarItems/>
@@ -286,13 +287,13 @@
                         <segue destination="hDp-1p-rF6" kind="relationship" relationship="rootViewController" id="e2X-M0-4hO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6C-lr-nZn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1422.8971962616822" y="651.83585313174956"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="ufi-cy-dmS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90X-cT-kwU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MGV-30-7an" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dashboard" image="homekit" catalog="system" id="GOf-wh-7Wk"/>
                     <toolbarItems/>
@@ -305,13 +306,13 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AhY-TL-Mg1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="90X-cT-kwU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1460.7476635514017" y="-78.401727861771064"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6hs-lc-W31">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anb-Wu-W4T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B8p-Oc-lOI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PPJ-3S-4qo">
@@ -323,7 +324,6 @@
                         <segue destination="9Wg-9r-KHV" kind="relationship" relationship="rootViewController" id="2tf-S6-GMh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="anb-Wu-W4T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1549.0654205607475" y="198.92008639308855"/>
         </scene>
