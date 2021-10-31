@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0E7739272F286800B13C46 /* BalanceRem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E7737272F286800B13C46 /* BalanceRem+CoreDataClass.swift */; };
+		8B0E773A272F286800B13C46 /* BalanceRem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E7738272F286800B13C46 /* BalanceRem+CoreDataProperties.swift */; };
 		8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B13A1A0272B5447001C48B4 /* Model.xcdatamodeld */; };
 		8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B166510271CEFAA007E68C5 /* BudgetViewController.swift */; };
 		8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B22739B271B6D3300FFE204 /* AppDelegate.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B0E7737272F286800B13C46 /* BalanceRem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BalanceRem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8B0E7738272F286800B13C46 /* BalanceRem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BalanceRem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B13A1A1272B5447001C48B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8B166510271CEFAA007E68C5 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		8B227398271B6D3300FFE204 /* FinalProject_Popescu_Tudor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_Popescu_Tudor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0E773B272F287400B13C46 /* BalanceRem */ = {
+			isa = PBXGroup;
+			children = (
+				8B0E7737272F286800B13C46 /* BalanceRem+CoreDataClass.swift */,
+				8B0E7738272F286800B13C46 /* BalanceRem+CoreDataProperties.swift */,
+			);
+			path = BalanceRem;
+			sourceTree = "<group>";
+		};
 		8B22738F271B6D3300FFE204 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 		8B22739A271B6D3300FFE204 /* FinalProject_Popescu_Tudor */ = {
 			isa = PBXGroup;
 			children = (
+				8B0E773B272F287400B13C46 /* BalanceRem */,
 				8BCC0DDA272E1ED200EE1F15 /* ExpPaid */,
 				8BCC0DD5272E1E5C00EE1F15 /* ExpRemaining */,
 				8BCC0DD0272E164400EE1F15 /* ExpenseTable */,
@@ -352,9 +366,11 @@
 				8BCC0DD8272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift in Sources */,
 				8B2273A0271B6D3300FFE204 /* ViewController.swift in Sources */,
 				8BCC0DD9272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift in Sources */,
+				8B0E773A272F286800B13C46 /* BalanceRem+CoreDataProperties.swift in Sources */,
 				8B166511271CEFAA007E68C5 /* BudgetViewController.swift in Sources */,
 				8B22739C271B6D3300FFE204 /* AppDelegate.swift in Sources */,
 				8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */,
+				8B0E7739272F286800B13C46 /* BalanceRem+CoreDataClass.swift in Sources */,
 				8BCC0DD4272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift in Sources */,
 				8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */,
 				8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */,

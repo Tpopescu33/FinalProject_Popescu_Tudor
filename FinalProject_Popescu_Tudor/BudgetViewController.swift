@@ -48,7 +48,7 @@ let green = UIColor(hexString: "#79D70F")
 let orange = UIColor(hexString: "#F5A31A")
 var totalIncome: Int = 0
 var totalExpenses: Int = 0
-var balanceAmount: Int = totalIncome - totalExpenses
+var balanceAmount: Int = 0
 
 
 
@@ -92,6 +92,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 self.tableView.reloadData()
                 getBalance()
+                sendDataIncome()
             }
             
 
@@ -141,10 +142,26 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let newItem = IncomeTable(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
-        newItem.month = monthNo
+        newItem.month = month
         
         do {
             try context.save()
+            
+            getTable()
+        } catch {
+            //error
+        }
+
+    }
+    
+    func createIncomeEntry2(balance: Int, month: Int) {
+        let newItem = BalanceRem(context: context)
+        newItem.balance = balance
+        newItem.month = month
+        
+        do {
+            try context.save()
+            
             getTable()
         } catch {
             //error
@@ -186,6 +203,18 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func deleteIncomeEntry(item: IncomeTable) {
         context.delete(item)
         sections[0].isOpen = false
+        
+        do {
+            try context.save()
+            
+        } catch {
+            //error
+        }
+    }
+    
+    func deleteIncomeEntry2(item: BalanceRem) {
+        context.delete(item)
+        
         
         do {
             try context.save()
@@ -269,7 +298,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 
                 self.createIncomeEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
-                
+                self.createIncomeEntry2(balance: amountText, month: self.monthNo)
                 
                 self.getTable()
                 self.sendDataIncome()
@@ -350,7 +379,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         
         firstTab.monthNo = monthNo
-        firstTab.setIncomeAmount = totalIncome
+        
 
     }
     
@@ -402,7 +431,23 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             catch{
                 
-            }} else if indexPath.section == 1 {
+            }
+                
+                do {
+                let items = try context.fetch(BalanceRem.fetchRequest())
+                    let item = items[indexPath.row-1]
+                    deleteIncomeEntry2(item: item)
+                    sections[0].isOpen = false
+                    getTable()
+                    
+                   
+                   
+                    
+                }
+                catch{
+                    
+                }
+            } else if indexPath.section == 1 {
                 
                 do {
                 let items = try context.fetch(ExpenseTable.fetchRequest())
@@ -534,6 +579,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.getTable()
                 self.getTableExp()
                 self.getBalance()
+                self.sendDataIncome()
                 print(self.monthNo)
                 
             }))

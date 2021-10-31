@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct Sections {
     init(title: String, options: [String], isOpened: Bool = false, titleAmount: Int, optionsAmount: [Int]) {
@@ -55,15 +56,59 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // CORE DATA //
     
-    func getExpRemaining() {
+    func getBalance() {
+        
+        let fetchReq: NSFetchRequest<BalanceRem>
+        fetchReq = BalanceRem.fetchRequest()
+        
+        fetchReq.predicate = NSPredicate(
+            format: "month LIKE %@", "\(self.monthNo)"
+        )
+        self.tableView.reloadData()
+        self.sections[0].titleAmount = 0
         do {
-            let items = try context.fetch(ExpRemaining.fetchRequest())
+            let items = try context.fetch(fetchReq)
             
             print(items.count)
             
-            self.sections[1].optionsAmount.removeAll()
-            self.sections[1].options.removeAll()
-            self.sections[1].titleAmount = 0
+            
+            self.sections[0].titleAmount = 0
+            for i in 0..<items.count {
+                if (items.count != 0) {
+                   
+                    sections[0].changeTitleAmount(option: items[i].balance - sections[2].titleAmount)
+                }
+                self.tableView.reloadData()
+                
+            }
+            
+
+        } catch {
+            //error
+        }
+        
+        
+    }
+    
+    func getExpRemaining() {
+        
+        let fetchReq: NSFetchRequest<ExpRemaining>
+        fetchReq = ExpRemaining.fetchRequest()
+        
+        fetchReq.predicate = NSPredicate(
+            format: "month LIKE %@", "\(self.monthNo)"
+        )
+        
+        self.sections[1].optionsAmount.removeAll()
+        self.sections[1].options.removeAll()
+        self.sections[1].titleAmount = 0
+        self.tableView.reloadData()
+        do {
+            let items = try context.fetch(fetchReq)
+            
+            print(items.count)
+            
+           
             for i in 0..<items.count {
                 if (items.count != 0) {
                     sections[1].addOption(option: items[i].option!)
@@ -85,14 +130,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getExpPaid() {
+        
+        let fetchReq: NSFetchRequest<ExpPaid>
+        fetchReq = ExpPaid.fetchRequest()
+        
+        fetchReq.predicate = NSPredicate(
+            format: "month LIKE %@", "\(self.monthNo)"
+        )
+        
+        self.sections[2].optionsAmount.removeAll()
+        self.sections[2].options.removeAll()
+        self.sections[2].titleAmount = 0
+        
         do {
-            let items = try context.fetch(ExpPaid.fetchRequest())
+            let items = try context.fetch(fetchReq)
             
             print(items.count)
-            
-            self.sections[2].optionsAmount.removeAll()
-            self.sections[2].options.removeAll()
-            self.sections[2].titleAmount = 0
+            self.tableView.reloadData()
+          
             for i in 0..<items.count {
                 if (items.count != 0) {
                     sections[2].addOption(option: items[i].option!)
@@ -174,7 +229,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
      getExpPaid()
      getExpRemaining()
-        
+     getBalance()
+        print("month: \(self.monthNo)")
 
     }
     
@@ -183,7 +239,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.allowsSelectionDuringEditing = true
         getExpPaid()
         getExpRemaining()
-      
+        getBalance()
        
         
     }
@@ -202,7 +258,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
     
     
-    var sections = [Sections(title: "Balance Remaining", options: [], titleAmount: totalIncomeRemaining, optionsAmount: []),
+    var sections = [Sections(title: "Balance Remaining", options: [], titleAmount: totalIncome-totalCurrentExpenses, optionsAmount: []),
                     Sections(title: "Expenses Remaining", options: [], titleAmount: totalUpcomingExpenses, optionsAmount: []),
                     Sections(title: "Expenses Paid", options: [], titleAmount: totalCurrentExpenses, optionsAmount: [])]
 
@@ -232,7 +288,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.createPaidEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
                 self.getExpPaid()
-                
+                self.getBalance()
                 
                
                 
@@ -280,6 +336,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let item = items[indexPath.row-1]
                 deleteRemainingEntry(item: item)
                 getExpPaid()
+                getBalance()
             }
             catch{
                 
@@ -290,6 +347,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let item = items[indexPath.row-1]
                     deletePaidEntry(item: item)
                     getExpPaid()
+                    getBalance()
                 }
                 catch{
                     
