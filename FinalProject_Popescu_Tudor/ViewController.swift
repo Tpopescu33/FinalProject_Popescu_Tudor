@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
 
         } catch {
-            //error
+            print("error getting balance")
         }
         
         
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
 
         } catch {
-            //error
+            print("error getexpremaining" )
         }
             
        
@@ -165,7 +165,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
 
         } catch {
-            //error
+            print("error getexppaid")
         }
         
     }
@@ -180,7 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             try context.save()
             getExpPaid()
         } catch {
-            //error
+            print("createpaidentry")
         }
 
     }
@@ -198,8 +198,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            andPredicateWithSubpredicates: [namePredicate, monthPredicate]
         )
         
-        self.sections[1].titleAmount = 0
-        self.sections[1].optionsAmount[0] = 0
+//        self.sections[1].titleAmount = 0
+//        self.sections[1].optionsAmount[0] = 0
         
         do {
             let items = try context.fetch(fetchReq)
@@ -214,6 +214,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     updateRemainingEntry(item: items[0], newOptionAmount: items[0].optionAmount - titleAmount)
                     sections[1].changeTitleAmount(option: items[0].optionAmount - titleAmount)
+                
+                   
+                getExpRemaining()
+                self.tableView.reloadData()
+                
+            }
+            
+
+        } catch {
+            //error
+        }
+        
+    }
+    
+    func checkRemainingEntryDelete(option: String, optionAmount: Int, month: Int){
+        let title = option
+        let titleAmount = optionAmount
+        let fetchReq: NSFetchRequest<ExpRemaining>
+        fetchReq = ExpRemaining.fetchRequest()
+        
+        let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
+        let monthPredicate = NSPredicate(format: "month LIKE %@", "\(self.monthNo)")
+        
+        fetchReq.predicate = NSCompoundPredicate(
+           andPredicateWithSubpredicates: [namePredicate, monthPredicate]
+        )
+        
+//        self.sections[1].titleAmount = 0
+//        self.sections[1].optionsAmount[0] = 0
+        
+        do {
+            let items = try context.fetch(fetchReq)
+            
+            print(items.count)
+            self.tableView.reloadData()
+          
+           
+                if (items.count != 0) {
+                    
+                    
+                    
+                    updateRemainingEntry(item: items[0], newOptionAmount: items[0].optionAmount + titleAmount)
+                    sections[1].changeTitleAmount(option: items[0].optionAmount + titleAmount)
                 
                    
                 getExpRemaining()
@@ -250,8 +293,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func updateRemainingEntry(item: ExpRemaining, newOptionAmount: Int){
         item.optionAmount = newOptionAmount
+        self.tableView.reloadData()
         do {
             try context.save()
+            self.tableView.reloadData()
         } catch {
             //error
         }
@@ -399,8 +444,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 do {
                 let items = try context.fetch(ExpPaid.fetchRequest())
                     let item = items[indexPath.row-1]
-                    deletePaidEntry(item: item)
                     
+                    self.checkRemainingEntryDelete(option: item.option!, optionAmount: item.optionAmount, month: self.monthNo)
+                    deletePaidEntry(item: item)
                     getExpPaid()
                     getBalance()
                 }
