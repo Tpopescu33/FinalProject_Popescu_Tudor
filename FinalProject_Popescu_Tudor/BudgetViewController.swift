@@ -49,7 +49,8 @@ let orange = UIColor(hexString: "#F5A31A")
 var totalIncome: Int = 0
 var totalExpenses: Int = 0
 var balanceAmount: Int = 0
-
+let years = ["2021", "2022", "2023", "2024", "2025"]
+let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
 
@@ -69,7 +70,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchReq = IncomeTable.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-        format: "month LIKE %@", "\(monthNo)"
+        format: "month == %i AND year == %i", monthNo, yearNo
         )
         
         self.sections[0].optionsAmount.removeAll()
@@ -90,6 +91,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     sections[0].addOptionAmount(option: items[i].optionAmount)
                     sections[0].changeTitleAmount(option: items[i].optionAmount)
                 }
+                print(items)
                 self.tableView.reloadData()
                 getBalance()
                 sendDataIncome()
@@ -107,8 +109,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchReqExp = ExpenseTable.fetchRequest()
         
         fetchReqExp.predicate = NSPredicate(
-        format: "month LIKE %@", "\(monthNo)"
-        )
+            format: "month == %i AND year == %i", monthNo, yearNo
+            )
         
         self.sections[1].optionsAmount.removeAll()
         self.sections[1].options.removeAll()
@@ -138,11 +140,13 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    func createIncomeEntry(option: String, optionAmount: Int, month: Int) {
+    func createIncomeEntry(option: String, optionAmount: Int, monthNo: Int, yearNo: Int) {
         let newItem = IncomeTable(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
-        newItem.month = month
+        newItem.month = monthNo
+        newItem.year = yearNo
+        
         
         do {
             try context.save()
@@ -154,10 +158,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
-    func createIncomeEntry2(balance: Int, month: Int) {
+    func createIncomeEntry2(balance: Int, monthNo: Int, yearNo: Int) {
         let newItem = BalanceRem(context: context)
         newItem.balance = balance
-        newItem.month = month
+        newItem.month = monthNo
+        newItem.year = yearNo
         
         do {
             try context.save()
@@ -171,11 +176,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     
-    func createExpenseEntry(option: String, optionAmount: Int, month: Int) {
+    func createExpenseEntry(option: String, optionAmount: Int, monthNo: Int, yearNo: Int) {
         let newItem = ExpenseTable(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
+        newItem.year = yearNo
         
         do {
             try context.save()
@@ -185,11 +191,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
     }
-    func createExpenseEntry2(option: String, optionAmount: Int, month: Int) {
+    func createExpenseEntry2(option: String, optionAmount: Int, monthNo: Int, yearNo: Int) {
         let newItem = ExpRemaining(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
+        newItem.year = yearNo
         
         do {
             try context.save()
@@ -256,8 +263,15 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var sections = [Section(title: "Income", options: [], titleAmount:totalIncome, optionsAmount: []),
                     Section(title: "Expenses", options: [], titleAmount: totalExpenses, optionsAmount: []), Section(title: "Balance", options: [], titleAmount: balanceAmount, optionsAmount: [])]
     
-    let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
     var monthNo: Int = 0
+    var yearNo: Int = 0
+    var tempMonth: String = "November"
+    var tempYear: String = "2021"
+    var tempMonthNo: Int = 0
+    var tempYearNo: Int = 0
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -265,8 +279,24 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.allowsSelectionDuringEditing = true
         getTable()
         getTableExp()
+        datePicker = UIPickerView()
+        datePicker?.dataSource = self
+        datePicker?.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        
+        inputMonthField.inputView = datePicker
+        
+       
+        
         
     }
+    
+    @objc func viewTapped() {
+        
+        view.endEditing(true)
+        }
     
     
 
@@ -274,6 +304,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
         
         self.tableView.isEditing = !self.tableView.isEditing
+        
         sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
     }
     
@@ -297,8 +328,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                let amountText = Int(textfield[1].text!) {
                 
                 
-                self.createIncomeEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
-                self.createIncomeEntry2(balance: amountText, month: self.monthNo)
+                self.createIncomeEntry(option: incomeText, optionAmount: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
+                self.createIncomeEntry2(balance: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
                 
                 self.getTable()
                 self.sendDataIncome()
@@ -339,8 +370,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 
                 
-                self.createExpenseEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
-                self.createExpenseEntry2(option: incomeText, optionAmount: amountText, month: self.monthNo)
+                self.createExpenseEntry(option: incomeText, optionAmount: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
+                self.createExpenseEntry2(option: incomeText, optionAmount: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
                 self.getTableExp()
                 self.sendDataExpense()
                 
@@ -365,6 +396,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
         firstTab.monthNo = monthNo
+        firstTab.yearNo = yearNo
         
 
     }
@@ -379,6 +411,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         
         firstTab.monthNo = monthNo
+        firstTab.yearNo = yearNo
         
 
     }
@@ -563,6 +596,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
     }
+    @IBOutlet weak var inputMonthField: UITextField!
+    private var datePicker: UIPickerView?
     
     
     @IBOutlet weak var monthLabel: UILabel!
@@ -574,7 +609,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for i in 0...11 {
             actionSheet.addAction(UIAlertAction(title: "\(months[i])", style: .default, handler: { _ in
                 
-                self.monthLabel.text = "\(self.months[i])"
+                self.monthLabel.text = "\(months[i])"
                 self.monthNo = i
                 self.getTable()
                 self.getTableExp()
@@ -589,7 +624,89 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
+    
+    
   
     
 }
 
+extension BudgetViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+        if component == 0 {
+            return 12
+        }
+        return 5
+    }
+    
+    
+}
+
+
+
+extension BudgetViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       
+        if component == 0 {
+            for i in 0...11 {
+                if row == i {
+                    return months[i]
+                }
+            }
+        } else {
+            for i in 0...4 {
+                if row == i {
+                    return years[i]
+        }
+            }}
+        return "test"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        
+        if component == 0 {
+            tempMonth = months[row]
+            tempMonthNo = row
+        } else if component == 1 {
+            tempYear = years[row]
+            tempYearNo = row
+        }
+        
+       
+        
+       
+        
+        inputMonthField.text = "\(tempMonth), \(tempYear)"
+        self.monthNo = tempMonthNo
+        self.yearNo = tempYearNo
+        self.getTable()
+        self.getTableExp()
+        self.getBalance()
+        self.sendDataIncome()
+        print("month \(monthNo)")
+        print("year \(yearNo)")
+        
+    }
+}
+
+extension BudgetViewController: UIGestureRecognizerDelegate {
+
+func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    if  touch.view!.isKind(of: UIButton.self) {
+        return false
+    } else if touch.view!.isKind(of: UITableView.self) || touch.view!.isKind(of: UITextField.self){
+        view.endEditing(true)
+        return true
+    } else {
+        return false
+    }
+    
+    
+}
+    
+}

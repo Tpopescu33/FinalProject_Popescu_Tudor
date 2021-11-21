@@ -3,37 +3,42 @@
     <entity name="BalanceRem" representedClassName="BalanceRem" syncable="YES">
         <attribute name="balance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="ExpenseTable" representedClassName="ExpenseTable" syncable="YES">
         <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="option" optional="YES" attributeType="String"/>
         <attribute name="optionAmount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="ExpPaid" representedClassName="ExpPaid" syncable="YES">
         <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="option" optional="YES" attributeType="String"/>
         <attribute name="optionAmount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="ExpRemaining" representedClassName="ExpRemaining" syncable="YES">
         <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="option" optional="YES" attributeType="String"/>
         <attribute name="optionAmount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="IncomeTable" representedClassName="IncomeTable" syncable="YES">
         <attribute name="month" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="option" optional="YES" attributeType="String"/>
         <attribute name="optionAmount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="LoginDictionary" representedClassName="LoginDictionary" syncable="YES">
         <attribute name="passWord" optional="YES" attributeType="String"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ExpenseTable" positionX="-54" positionY="27" width="128" height="74"/>
-        <element name="ExpPaid" positionX="-18" positionY="63" width="128" height="74"/>
-        <element name="ExpRemaining" positionX="-36" positionY="45" width="128" height="74"/>
-        <element name="IncomeTable" positionX="-63" positionY="0" width="128" height="74"/>
+        <element name="BalanceRem" positionX="-36" positionY="45" width="128" height="74"/>
+        <element name="ExpenseTable" positionX="-54" positionY="27" width="128" height="89"/>
+        <element name="ExpPaid" positionX="-18" positionY="63" width="128" height="89"/>
+        <element name="ExpRemaining" positionX="-36" positionY="45" width="128" height="89"/>
+        <element name="IncomeTable" positionX="-63" positionY="0" width="128" height="89"/>
         <element name="LoginDictionary" positionX="-63" positionY="-18" width="128" height="59"/>
-        <element name="BalanceRem" positionX="-36" positionY="45" width="128" height="59"/>
     </elements>
 </model>

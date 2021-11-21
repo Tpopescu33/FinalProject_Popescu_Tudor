@@ -38,8 +38,10 @@ struct Sections {
     }
     
 }
-let green2 = UIColor(hexString: "#DDFFBC")
-let green1 = UIColor(hexString: "#91C788")
+let green2 = UIColor(hexString: "#1E5128")
+let green1 = UIColor(hexString: "#4E9F3D")
+let green3 = UIColor(hexString: "#D8E9A8")
+let black1 = UIColor(hexString: "#191A19")
 
 var totalIncomeRemaining: Int = 0
 var totalUpcomingExpenses: Int = 0
@@ -53,8 +55,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
+    @IBOutlet weak var monthLabel: UILabel!
     
     var monthNo: Int = 0
+    var yearNo: Int = 0
   
     
     // CORE DATA //
@@ -65,8 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = BalanceRem.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month LIKE %@", "\(self.monthNo)"
-        )
+            format: "month == %i AND year == %i", monthNo, yearNo        )
         self.tableView.reloadData()
         self.sections[0].titleAmount = 0
         do {
@@ -99,7 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpRemaining.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month LIKE %@", "\(self.monthNo)"
+            format: "month == %i AND year == %i", monthNo, yearNo
         )
         
         self.sections[1].optionsAmount.removeAll()
@@ -138,7 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpPaid.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month LIKE %@", "\(self.monthNo)"
+            format: "month == %i AND year == %i", monthNo, yearNo
         )
         
         self.sections[2].optionsAmount.removeAll()
@@ -170,11 +173,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func createPaidEntry(option: String, optionAmount: Int, month: Int) {
+    func createPaidEntry(option: String, optionAmount: Int, monthNo: Int, yearNo: Int) {
         let newItem = ExpPaid(context: context)
         newItem.option = option
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
+        newItem.year = yearNo
         
         do {
             try context.save()
@@ -185,14 +189,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    func checkRemainingEntry(option: String, optionAmount: Int, month: Int){
+    func checkRemainingEntry(option: String, optionAmount: Int, monthNo: Int, yearNo: Int){
         let title = option
         let titleAmount = optionAmount
         let fetchReq: NSFetchRequest<ExpRemaining>
         fetchReq = ExpRemaining.fetchRequest()
         
         let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
-        let monthPredicate = NSPredicate(format: "month LIKE %@", "\(self.monthNo)")
+        let monthPredicate = NSPredicate(format: "month == %i AND year == %i", monthNo, yearNo)
         
         fetchReq.predicate = NSCompoundPredicate(
            andPredicateWithSubpredicates: [namePredicate, monthPredicate]
@@ -228,14 +232,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func checkRemainingEntryDelete(option: String, optionAmount: Int, month: Int){
+    func checkRemainingEntryDelete(option: String, optionAmount: Int, monthNo: Int, yearNo: Int){
         let title = option
         let titleAmount = optionAmount
         let fetchReq: NSFetchRequest<ExpRemaining>
         fetchReq = ExpRemaining.fetchRequest()
         
         let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
-        let monthPredicate = NSPredicate(format: "month LIKE %@", "\(self.monthNo)")
+        let monthPredicate = NSPredicate(format: "month == %i AND year == %i", monthNo, yearNo)
         
         fetchReq.predicate = NSCompoundPredicate(
            andPredicateWithSubpredicates: [namePredicate, monthPredicate]
@@ -324,10 +328,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var isExpense = false
     
     override func viewDidAppear(_ animated: Bool) {
+    
         
-     getExpPaid()
-     getExpRemaining()
-     getBalance()
+        monthLabel.text = "\(months[monthNo]), \(years[yearNo])"
+        getExpPaid()
+        getExpRemaining()
+        getBalance()
         print("month: \(self.monthNo)")
 
     }
@@ -372,11 +378,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         let addExpenseCont = UIAlertController(title: "Add Expense", message: nil, preferredStyle: .alert)
+        addExpenseCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
         addExpenseCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Name"
+            textfield.backgroundColor = green2
         }
         addExpenseCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Amount"
+            textfield.backgroundColor = green2
         }
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: {_ in
             guard let textfield = addExpenseCont.textFields else {return}
@@ -384,8 +393,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if  let incomeText = textfield[0].text,
                 let amountText = Int(textfield[1].text!){
                 
-                self.createPaidEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
-                self.checkRemainingEntry(option: incomeText, optionAmount: amountText, month: self.monthNo)
+                self.createPaidEntry(option: incomeText, optionAmount: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
+                self.checkRemainingEntry(option: incomeText, optionAmount: amountText, monthNo: self.monthNo, yearNo: self.yearNo)
                 self.getExpPaid()
                 self.getBalance()
                 
@@ -445,7 +454,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let items = try context.fetch(ExpPaid.fetchRequest())
                     let item = items[indexPath.row-1]
                     
-                    self.checkRemainingEntryDelete(option: item.option!, optionAmount: item.optionAmount, month: self.monthNo)
+                    self.checkRemainingEntryDelete(option: item.option!, optionAmount: item.optionAmount, monthNo: self.monthNo, yearNo: self.yearNo)
                     deletePaidEntry(item: item)
                     getExpPaid()
                     getBalance()
@@ -507,32 +516,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            if indexPath.section == 2 {
-                cell.backgroundColor = green
-            } else if indexPath.section == 1 {
-                cell.backgroundColor = red
-            } else {
-               
-                if self.sections[0].titleAmount > 100 {
-                    cell.backgroundColor = green
-                    
-                } else if self.sections[0].titleAmount < 0{
-                    cell.backgroundColor = red
-                    
-                } else {
-                    cell.backgroundColor = orange
-                }
-            }
+            cell.backgroundColor = green2
+            cellName.textColor = green3
+            cellAmount.textColor = green3
+//            if indexPath.section == 2 {
+//                cell.backgroundColor = green1
+//            } else if indexPath.section == 1 {
+//                cell.backgroundColor = red
+//            } else {
+//
+//                if self.sections[0].titleAmount > 100 {
+//                    cell.backgroundColor = green
+//
+//                } else if self.sections[0].titleAmount < 0{
+//                    cell.backgroundColor = red
+//
+//                } else {
+//                    cell.backgroundColor = orange
+//                }
+//            }
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
             cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
-            
-            if indexPath.section == 2 {
-                cell.backgroundColor = green.withAlphaComponent(0.5)
-            } else {
-                cell.backgroundColor = red.withAlphaComponent(0.5)
-            }
+            cell.backgroundColor = green1
+            cellName.textColor = black1
+            cellAmount.textColor = black1
+//            if indexPath.section == 2 {
+//                cell.backgroundColor = green.withAlphaComponent(0.5)
+//            } else {
+//                cell.backgroundColor = red.withAlphaComponent(0.5)
+//            }
             
             
            
@@ -562,6 +576,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
     }
+    
+    
     
 }
 

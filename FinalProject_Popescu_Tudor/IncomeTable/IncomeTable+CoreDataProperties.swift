@@ -19,6 +19,7 @@ extension IncomeTable {
     @NSManaged public var option: String?
     @NSManaged public var optionAmount: Int
     @NSManaged public var month: Int
+    @NSManaged public var year: Int
 
 }
 
