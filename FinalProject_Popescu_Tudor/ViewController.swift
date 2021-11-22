@@ -375,8 +375,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     Sections(title: "Expenses Paid", options: [], titleAmount: totalCurrentExpenses, optionsAmount: [])]
 
     // Alert Functions
-    
-    @IBAction func addExpenseBtn(_ sender: Any) {
+//    
+//    @IBAction func addExpenseBtn(_ sender: Any) {
+//        print("click")
+//        self.presentAddExpense()
+//    }
+    @IBAction func addExpenseButton(_ sender: Any) {
         print("click")
         self.presentAddExpense()
     }
