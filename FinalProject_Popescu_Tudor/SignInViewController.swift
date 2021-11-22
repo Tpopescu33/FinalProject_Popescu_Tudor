@@ -7,6 +7,8 @@
 
 import UIKit
 
+let defaults = UserDefaults.standard
+
 class SignInViewController: UIViewController {
     
     
@@ -32,11 +34,14 @@ class SignInViewController: UIViewController {
     func presentSignIn () {
         
         let signInCont = UIAlertController(title: "Sign In", message: nil, preferredStyle: .alert)
+        signInCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
+        signInCont.view.tintColor = black1
         signInCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Username"
         }
         signInCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Password"
+            textfield.isSecureTextEntry = true
         }
         
         let signInAction = UIAlertAction(title: "Sign In", style: .default, handler: {_ in
@@ -55,10 +60,11 @@ class SignInViewController: UIViewController {
                         self.loginDictionary[items[i].userName!] = items[i].passWord
                         
                         if self.loginDictionary[userName!] == passWord! {
+                            defaults.set(userName, forKey: "userName")
                             self.performSegue(withIdentifier: "login", sender: self)
                             print("matches")
-                        } else {
-                            return
+                        }else {
+                            self.createAlert(title: "Invalid Entry!", msg: "Combination of User Name and Password is not valid")
                         }
                         
                     } } catch {
@@ -69,7 +75,9 @@ class SignInViewController: UIViewController {
                 
                 
                 
-            } else { return }
+            } else {
+                self.createAlert(title: "Missing Entry!", msg: "Missing User Name or Password")
+            }
                 
                 
             
@@ -82,19 +90,34 @@ class SignInViewController: UIViewController {
         
     }
     
+    func createAlert(title: String, msg:String) {
+        let alert = UIAlertController(title: title, message: msg , preferredStyle: .alert)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green1
+        alert.view.tintColor = black1
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: {_ in self.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+                
+    }
+    
     
     func presentSignUp () {
         
-        let signUpCont = UIAlertController(title: "Sign In", message: nil, preferredStyle: .alert)
+        let signUpCont = UIAlertController(title: "Sign Up", message: nil, preferredStyle: .alert)
+        signUpCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
+        signUpCont.view.tintColor = black1
         signUpCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Username"
         }
         signUpCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Password"
+            textfield.isSecureTextEntry = true
         }
         
         signUpCont.addTextField{ (textfield) in
             textfield.placeholder = "Confirm Password"
+            textfield.isSecureTextEntry = true
         }
         
         let signUpAction = UIAlertAction(title: "Sign Up", style: .default, handler: {_ in
@@ -107,13 +130,16 @@ class SignInViewController: UIViewController {
             if  (userName?.count != 0 && passWord?.count != 0 && confirmPassWord?.count != 0) {
                 if confirmPassWord! == passWord! {
                     self.createEntry(userName: userName! ,passWord: passWord!)
+                    defaults.set(userName, forKey: "userName")
                     self.performSegue(withIdentifier: "login", sender: self)
                     
                 } else {
-                    return
+                    self.createAlert(title: "Password Don't Match!", msg: "Password and Confirm Password do not match")
                 }
                 
-            } else { return }
+            } else {
+                self.createAlert(title: "Missing Entry", msg: "Missing User Name, or Password, or Confirm Password")
+            }
                 
                 
             
@@ -125,6 +151,8 @@ class SignInViewController: UIViewController {
         self.present(signUpCont, animated: true, completion: nil)
         
     }
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

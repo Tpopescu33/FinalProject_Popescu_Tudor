@@ -70,7 +70,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchReq = IncomeTable.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-        format: "month == %i AND year == %i", monthNo, yearNo
+        format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName
         )
         
         self.sections[0].optionsAmount.removeAll()
@@ -109,7 +109,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchReqExp = ExpenseTable.fetchRequest()
         
         fetchReqExp.predicate = NSPredicate(
-            format: "month == %i AND year == %i", monthNo, yearNo
+            format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName
             )
         
         self.sections[1].optionsAmount.removeAll()
@@ -146,7 +146,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
         newItem.year = yearNo
-        
+        newItem.userName = userName
         
         do {
             try context.save()
@@ -163,6 +163,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         newItem.balance = balance
         newItem.month = monthNo
         newItem.year = yearNo
+        newItem.userName = userName
         
         do {
             try context.save()
@@ -182,6 +183,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
         newItem.year = yearNo
+        newItem.userName = userName
         
         do {
             try context.save()
@@ -197,6 +199,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
         newItem.year = yearNo
+        newItem.userName = userName
         
         do {
             try context.save()
@@ -270,12 +273,16 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tempYear: String = "2021"
     var tempMonthNo: Int = 0
     var tempYearNo: Int = 0
-    
+    var userName: String = ""
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userName = defaults.string(forKey: "userName")!
+        monthNo = defaults.integer(forKey: "monthNo")
+        yearNo = defaults.integer(forKey: "yearNo")
+        inputMonthField.text = "\(defaults.string(forKey: "month")!), \(defaults.string(forKey: "year")!)"
         self.tableView.allowsSelectionDuringEditing = true
         getTable()
         getTableExp()
@@ -315,6 +322,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func presentAddIncome() {
         let addIncomeCont = UIAlertController(title: "Add Income", message: nil, preferredStyle: .alert)
+        addIncomeCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
+        addIncomeCont.view.tintColor = black1
         addIncomeCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Name"
         }
@@ -356,6 +365,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         let addIncomeCont = UIAlertController(title: "Add Expense", message: nil, preferredStyle: .alert)
+        addIncomeCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
+        addIncomeCont.view.tintColor = black1
         addIncomeCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Name"
         }
@@ -541,33 +552,39 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            if indexPath.section == 0 {
-                cell.backgroundColor = green
-            } else if indexPath.section == 1 {
-                cell.backgroundColor = red
-            } else {
-               
-                if self.sections[2].titleAmount == 0 {
-                    cell.backgroundColor = green
-                    
-                } else if self.sections[2].titleAmount < 0{
-                    cell.backgroundColor = red
-                    
-                } else {
-                    cell.backgroundColor = orange
-                }
-            }
+            cell.backgroundColor = green2
+            cellName.textColor = green3
+            cellAmount.textColor = green3
+//            if indexPath.section == 0 {
+//                cell.backgroundColor = green
+//            } else if indexPath.section == 1 {
+//                cell.backgroundColor = red
+//            } else {
+//
+//                if self.sections[2].titleAmount == 0 {
+//                    cell.backgroundColor = green
+//
+//                } else if self.sections[2].titleAmount < 0{
+//                    cell.backgroundColor = red
+//
+//                } else {
+//                    cell.backgroundColor = orange
+//                }
+//            }
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
             cellAmount.text = "$\(self.sections[indexPath.section].optionsAmount[indexPath.row - 1])"
+            cell.backgroundColor = green1
+            cellName.textColor = black1
+            cellAmount.textColor = black1
             
-            if indexPath.section == 0 {
-                cell.backgroundColor = green.withAlphaComponent(0.5)
-            } else {
-                cell.backgroundColor = red.withAlphaComponent(0.5)
-            }
-            
+//            if indexPath.section == 0 {
+//                cell.backgroundColor = green.withAlphaComponent(0.5)
+//            } else {
+//                cell.backgroundColor = red.withAlphaComponent(0.5)
+//            }
+//            
             
            
         }
@@ -678,10 +695,12 @@ extension BudgetViewController: UIPickerViewDelegate {
         }
         
        
+        defaults.set(tempMonth, forKey: "month")
+        defaults.set(tempYear, forKey: "year")
+        defaults.set(tempMonthNo, forKey: "monthNo")
+        defaults.set(tempYearNo, forKey: "yearNo")
         
-       
-        
-        inputMonthField.text = "\(tempMonth), \(tempYear)"
+        inputMonthField.text = "\(defaults.string(forKey: "month")!), \(defaults.string(forKey: "year")!)"
         self.monthNo = tempMonthNo
         self.yearNo = tempYearNo
         self.getTable()

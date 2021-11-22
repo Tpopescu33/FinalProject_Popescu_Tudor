@@ -19,6 +19,7 @@ extension BalanceRem {
     @NSManaged public var balance: Int
     @NSManaged public var month: Int
     @NSManaged public var year: Int
+    @NSManaged public var userName: String?
 
 }
 

@@ -20,6 +20,7 @@ extension IncomeTable {
     @NSManaged public var optionAmount: Int
     @NSManaged public var month: Int
     @NSManaged public var year: Int
+    @NSManaged public var userName: String?
 
 }
 

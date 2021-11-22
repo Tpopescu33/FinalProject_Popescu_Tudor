@@ -24,6 +24,7 @@
 		8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */; };
 		8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */; };
 		8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C7482725CC81008E9F99 /* SignInViewController.swift */; };
+		8BA39E1C274AD52F00AC7D30 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA39E1B274AD52F00AC7D30 /* SettingsTableViewController.swift */; };
 		8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DC7272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift */; };
 		8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */; };
 		8BCC0DCE272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DCC272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift */; };
@@ -73,6 +74,7 @@
 		8B2E2E8A272CC00500B87569 /* LoginDictionary+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B2E2E8B272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDictionary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B41C7482725CC81008E9F99 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8BA39E1B274AD52F00AC7D30 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8BCC0DC7272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeTable+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BCC0DC8272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeTable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BCC0DCC272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseTable+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				8B2273A9271B6D3500FFE204 /* Info.plist */,
 				8B166510271CEFAA007E68C5 /* BudgetViewController.swift */,
 				8B41C7482725CC81008E9F99 /* SignInViewController.swift */,
+				8BA39E1B274AD52F00AC7D30 /* SettingsTableViewController.swift */,
 			);
 			path = FinalProject_Popescu_Tudor;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */,
 				8BCC0DCA272DF08B00EE1F15 /* IncomeTable+CoreDataProperties.swift in Sources */,
 				8BCC0DCE272E163100EE1F15 /* ExpenseTable+CoreDataClass.swift in Sources */,
+				8BA39E1C274AD52F00AC7D30 /* SettingsTableViewController.swift in Sources */,
 				8BCC0DCF272E163100EE1F15 /* ExpenseTable+CoreDataProperties.swift in Sources */,
 				8BCC0DD3272E1E5300EE1F15 /* ExpRemaining+CoreDataClass.swift in Sources */,
 			);

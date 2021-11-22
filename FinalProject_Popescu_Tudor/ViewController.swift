@@ -38,10 +38,12 @@ struct Sections {
     }
     
 }
-let green2 = UIColor(hexString: "#1E5128")
-let green1 = UIColor(hexString: "#4E9F3D")
-let green3 = UIColor(hexString: "#D8E9A8")
-let black1 = UIColor(hexString: "#191A19")
+
+
+var green2 = UIColor(hexString: "#1E5128")
+var green1 = UIColor(hexString: "#4E9F3D")
+var green3 = UIColor(hexString: "#D8E9A8")
+var black1 = UIColor(hexString: "#191A19")
 
 var totalIncomeRemaining: Int = 0
 var totalUpcomingExpenses: Int = 0
@@ -69,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = BalanceRem.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month == %i AND year == %i", monthNo, yearNo        )
+            format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName        )
         self.tableView.reloadData()
         self.sections[0].titleAmount = 0
         do {
@@ -102,7 +104,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpRemaining.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month == %i AND year == %i", monthNo, yearNo
+            format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName
         )
         
         self.sections[1].optionsAmount.removeAll()
@@ -141,7 +143,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpPaid.fetchRequest()
         
         fetchReq.predicate = NSPredicate(
-            format: "month == %i AND year == %i", monthNo, yearNo
+            format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName
         )
         
         self.sections[2].optionsAmount.removeAll()
@@ -179,7 +181,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         newItem.optionAmount = optionAmount
         newItem.month = monthNo
         newItem.year = yearNo
-        
+        newItem.userName = userName
         do {
             try context.save()
             getExpPaid()
@@ -196,7 +198,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpRemaining.fetchRequest()
         
         let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
-        let monthPredicate = NSPredicate(format: "month == %i AND year == %i", monthNo, yearNo)
+        let monthPredicate = NSPredicate(format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName)
         
         fetchReq.predicate = NSCompoundPredicate(
            andPredicateWithSubpredicates: [namePredicate, monthPredicate]
@@ -239,7 +241,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchReq = ExpRemaining.fetchRequest()
         
         let namePredicate = NSPredicate(format: "option LIKE %@",  "\(title)")
-        let monthPredicate = NSPredicate(format: "month == %i AND year == %i", monthNo, yearNo)
+        let monthPredicate = NSPredicate(format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName)
         
         fetchReq.predicate = NSCompoundPredicate(
            andPredicateWithSubpredicates: [namePredicate, monthPredicate]
@@ -326,10 +328,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var setExpenseAmount: [Int] = []
     var setIncomeAmount: Int = 0
     var isExpense = false
+    var userName: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-    
-        
+        userName = defaults.string(forKey: "userName")!
+        monthNo = defaults.integer(forKey: "monthNo")
+        yearNo = defaults.integer(forKey: "yearNo")
         monthLabel.text = "\(months[monthNo]), \(years[yearNo])"
         getExpPaid()
         getExpRemaining()
@@ -340,7 +344,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userName = defaults.string(forKey: "userName")!
+        monthNo = defaults.integer(forKey: "monthNo")
+        yearNo = defaults.integer(forKey: "yearNo")
         self.tableView.allowsSelectionDuringEditing = true
+        monthLabel.text = "\(months[monthNo]), \(years[yearNo])"
         getExpPaid()
         getExpRemaining()
         getBalance()
@@ -379,14 +387,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let addExpenseCont = UIAlertController(title: "Add Expense", message: nil, preferredStyle: .alert)
         addExpenseCont.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green3
+        addExpenseCont.view.tintColor = black1
         addExpenseCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Name"
-            textfield.backgroundColor = green2
+           
         }
         addExpenseCont.addTextField{ (textfield) in
             textfield.placeholder = "Enter Amount"
-            textfield.backgroundColor = green2
+           
         }
+        
+        
+        
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: {_ in
             guard let textfield = addExpenseCont.textFields else {return}
             

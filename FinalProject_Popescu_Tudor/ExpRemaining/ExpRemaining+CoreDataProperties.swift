@@ -20,6 +20,7 @@ extension ExpRemaining {
     @NSManaged public var option: String?
     @NSManaged public var month: Int
     @NSManaged public var year: Int
+    @NSManaged public var userName: String?
 
 }
 
