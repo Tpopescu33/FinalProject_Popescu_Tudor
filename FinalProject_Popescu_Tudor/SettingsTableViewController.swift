@@ -138,8 +138,8 @@ class SettingsTableViewController: UITableViewController {
         logOutCont.view.tintColor = black1
         
         let logOutAction = UIAlertAction(title: "Log Out", style: .default, handler: {_ in
-           
-            
+            defaults.set(false, forKey: "isUserLoggedIn")
+            self.performSegue(withIdentifier: "logout", sender: self)
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
         

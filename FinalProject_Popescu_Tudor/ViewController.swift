@@ -317,7 +317,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBAction func editBtnAction(_ sender: UIBarButtonItem) {
         self.tableView.isEditing = !self.tableView.isEditing
-        sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
+        sender.title = (self.tableView.isEditing) ? "Done" : "Delete"
     }
     
     
