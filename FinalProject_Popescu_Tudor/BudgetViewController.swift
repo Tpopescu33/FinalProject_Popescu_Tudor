@@ -92,9 +92,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     sections[0].changeTitleAmount(option: items[i].optionAmount)
                 }
                 print(items)
-                self.tableView.reloadData()
                 getBalance()
                 sendDataIncome()
+                self.tableView.reloadData()
+                
             }
             
 
@@ -131,9 +132,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 
             }
-            
-            self.tableView.reloadData()
             getBalance()
+            sendDataIncome()
+            self.tableView.reloadData()
+            
         } catch {
             //error
         }
@@ -213,10 +215,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func deleteIncomeEntry(item: IncomeTable) {
         context.delete(item)
         sections[0].isOpen = false
-        
+        getTable()
         do {
             try context.save()
-            
+            getTable()
         } catch {
             //error
         }
@@ -224,11 +226,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteIncomeEntry2(item: BalanceRem) {
         context.delete(item)
-        
+        getTable()
         
         do {
             try context.save()
-            
+            getTable()
         } catch {
             //error
         }
@@ -236,9 +238,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteExpenseEntry(item: ExpenseTable) {
         context.delete(item)
-        
+        getTableExp()
+       
         do {
             try context.save()
+            getTableExp()
                     } catch {
             //error
         }
@@ -468,7 +472,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 deleteIncomeEntry(item: item)
                 sections[0].isOpen = false
                 getTable()
-                
+                getTableExp()
                
                
                 
@@ -483,7 +487,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     deleteIncomeEntry2(item: item)
                     sections[0].isOpen = false
                     getTable()
-                    
+                    getTableExp()
                    
                    
                     
