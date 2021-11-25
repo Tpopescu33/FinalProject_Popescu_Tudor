@@ -430,6 +430,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // TableView Functions
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if sections[2].isOpen == true {
+        if sections[2].options.count > 10 {
+            if indexPath.section == 0 {
+                return 0
+            }
+            if indexPath.section == 1 {
+                return 0
+            }
+        }
+        }
+        
+        return 50
+        
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         
@@ -597,6 +613,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if indexPath.row == 0{
             sections[indexPath.section].isOpen = !sections[indexPath.section].isOpen
             tableView.reloadSections([indexPath.section], with: .none)
+            tableView.reloadData()
         } else {
             print("tapped sub cell")
         }
