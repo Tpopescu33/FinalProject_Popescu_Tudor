@@ -432,7 +432,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if sections[2].isOpen == true {
-        if sections[2].options.count > 10 {
+        if sections[2].options.count > 7 {
             if indexPath.section == 0 {
                 return 0
             }
@@ -441,9 +441,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         }
-        
+        if sections[1].isOpen == true {
+        if sections[1].options.count > 7 {
+            if indexPath.section == 0 {
+                return 0
+            }
+            if indexPath.section == 2 {
+                return 0
+            }
+        }
+        }
+
         return 50
-        
+
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -465,18 +475,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (editingStyle == .delete){
 
 
-            if indexPath.section == 1 {
-
-            do {
-            let items = try context.fetch(ExpRemaining.fetchRequest())
-                let item = items[indexPath.row-1]
-                deleteRemainingEntry(item: item)
-                getExpPaid()
-                getBalance()
-            }
-            catch{
-                
-            }} else if indexPath.section == 2 {
+            if indexPath.section == 2 {
                 
                 do {
                 let items = try context.fetch(ExpPaid.fetchRequest())
@@ -488,6 +487,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     getBalance()
                 }
                 catch{
+                    print("error deleting")
                     
                 }
                 
