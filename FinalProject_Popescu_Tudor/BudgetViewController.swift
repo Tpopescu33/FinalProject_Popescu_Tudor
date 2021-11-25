@@ -43,9 +43,9 @@ struct Section {
 
 // global variables
 
-let red = UIColor(hexString: "#D32626")
+let red = UIColor(hexString: "#950101")
 let green = UIColor(hexString: "#79D70F")
-let orange = UIColor(hexString: "#F5A31A")
+let orange = UIColor(hexString: "#FFB319")
 var totalIncome: Int = 0
 var totalExpenses: Int = 0
 var balanceAmount: Int = 0
@@ -556,25 +556,35 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            cell.backgroundColor = green2
-            cellName.textColor = green3
-            cellAmount.textColor = green3
-//            if indexPath.section == 0 {
-//                cell.backgroundColor = green
-//            } else if indexPath.section == 1 {
-//                cell.backgroundColor = red
-//            } else {
-//
-//                if self.sections[2].titleAmount == 0 {
-//                    cell.backgroundColor = green
-//
-//                } else if self.sections[2].titleAmount < 0{
-//                    cell.backgroundColor = red
-//
-//                } else {
-//                    cell.backgroundColor = orange
-//                }
-//            }
+//            cell.backgroundColor = green2
+//            cellName.textColor = green3
+//            cellAmount.textColor = green3
+            if indexPath.section == 0 {
+                cell.backgroundColor = green2
+                cellName.textColor = green3
+                cellAmount.textColor = green3
+            } else if indexPath.section == 1 {
+                cell.backgroundColor = green2
+                cellName.textColor = green3
+                cellAmount.textColor = green3
+            } else {
+
+                if self.sections[2].titleAmount == 0 {
+                    cell.backgroundColor = orange
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+
+                } else if self.sections[2].titleAmount < 0{
+                    cell.backgroundColor = red
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+
+                } else {
+                    cell.backgroundColor = green1
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+                }
+            }
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]

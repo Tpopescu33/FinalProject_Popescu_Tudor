@@ -375,11 +375,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     Sections(title: "Expenses Paid", options: [], titleAmount: totalCurrentExpenses, optionsAmount: [])]
 
     // Alert Functions
-//    
-//    @IBAction func addExpenseBtn(_ sender: Any) {
-//        print("click")
-//        self.presentAddExpense()
-//    }
+
     @IBAction func addExpenseButton(_ sender: Any) {
         print("click")
         self.presentAddExpense()
@@ -532,25 +528,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            
             cellName.text = self.sections[indexPath.section].title
             cellAmount.text = "$\(self.sections[indexPath.section].titleAmount)"
-            cell.backgroundColor = green2
+//            cell.backgroundColor = green2
             cellName.textColor = green3
             cellAmount.textColor = green3
-//            if indexPath.section == 2 {
-//                cell.backgroundColor = green1
-//            } else if indexPath.section == 1 {
-//                cell.backgroundColor = red
-//            } else {
-//
-//                if self.sections[0].titleAmount > 100 {
-//                    cell.backgroundColor = green
-//
-//                } else if self.sections[0].titleAmount < 0{
-//                    cell.backgroundColor = red
-//
-//                } else {
-//                    cell.backgroundColor = orange
-//                }
-//            }
+            if indexPath.section == 2 {
+                cell.backgroundColor = green2
+                cellName.textColor = green3
+                cellAmount.textColor = green3
+
+                
+            } else if indexPath.section == 1 {
+                cell.backgroundColor = green2
+                cellName.textColor = green3
+                cellAmount.textColor = green3
+
+            } else {
+
+                if self.sections[0].titleAmount - sections[1].titleAmount > 200 {
+                    cell.backgroundColor = green1
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+
+                } else if self.sections[0].titleAmount - sections[1].titleAmount < 0{
+                    cell.backgroundColor = red
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+
+                } else {
+                    cell.backgroundColor = orange
+                    cellName.textColor = black1
+                    cellAmount.textColor = black1
+                }
+            }
             
         } else {
             cellName.text = self.sections[indexPath.section].options[indexPath.row - 1]
@@ -578,6 +587,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
     }
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
