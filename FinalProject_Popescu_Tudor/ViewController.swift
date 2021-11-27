@@ -356,6 +356,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       get {
+          return .portrait
+       }
+    }
+    
     
    
     

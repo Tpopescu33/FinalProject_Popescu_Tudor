@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EE71DAC2D025F74FFD2BE26 /* Pods_FinalProject_Popescu_Tudor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C0AAE6427AFDF713A5C5D /* Pods_FinalProject_Popescu_Tudor.framework */; };
+		36B4336784CE7FFC67F8F9E9 /* Pods_FinalProject_Popescu_TudorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D897EE59FCE803C55729EF8D /* Pods_FinalProject_Popescu_TudorTests.framework */; };
+		5E69D6EEC1CDCD8B6D96BE10 /* Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2EBB0AB1046DFECBC8570C /* Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework */; };
 		8B0E7739272F286800B13C46 /* BalanceRem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E7737272F286800B13C46 /* BalanceRem+CoreDataClass.swift */; };
 		8B0E773A272F286800B13C46 /* BalanceRem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E7738272F286800B13C46 /* BalanceRem+CoreDataProperties.swift */; };
 		8B13A1A2272B5447001C48B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B13A1A0272B5447001C48B4 /* Model.xcdatamodeld */; };
@@ -53,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		092A3E9EDE1E6D63A7C1F873 /* Pods-FinalProject_Popescu_TudorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_TudorTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_TudorTests/Pods-FinalProject_Popescu_TudorTests.release.xcconfig"; sourceTree = "<group>"; };
+		0C27DF91BCB5A4E34881CA96 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A8DD9948E06439195B436DE /* Pods-FinalProject_Popescu_TudorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_TudorTests.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_TudorTests/Pods-FinalProject_Popescu_TudorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F2EBB0AB1046DFECBC8570C /* Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0E7737272F286800B13C46 /* BalanceRem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BalanceRem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8B0E7738272F286800B13C46 /* BalanceRem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BalanceRem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B13A1A1272B5447001C48B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -83,6 +90,11 @@
 		8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpRemaining+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A94C0AAE6427AFDF713A5C5D /* Pods_FinalProject_Popescu_Tudor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject_Popescu_Tudor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C7B267AC4136AE7E189928 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C25E9F20F796DB73E2D85624 /* Pods-FinalProject_Popescu_Tudor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor.debug.xcconfig"; sourceTree = "<group>"; };
+		D897EE59FCE803C55729EF8D /* Pods_FinalProject_Popescu_TudorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject_Popescu_TudorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8A1D78584215254299DF77 /* Pods-FinalProject_Popescu_Tudor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor.release.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2E2E85272CBB4300B87569 /* CoreData.framework in Frameworks */,
+				1EE71DAC2D025F74FFD2BE26 /* Pods_FinalProject_Popescu_Tudor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B4336784CE7FFC67F8F9E9 /* Pods_FinalProject_Popescu_TudorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E69D6EEC1CDCD8B6D96BE10 /* Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +143,7 @@
 				8B2273BB271B6D3500FFE204 /* FinalProject_Popescu_TudorUITests */,
 				8B227399271B6D3300FFE204 /* Products */,
 				8B2E2E83272CBB4300B87569 /* Frameworks */,
+				913DF12ED6835899E859B7EE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				8B2E2E84272CBB4300B87569 /* CoreData.framework */,
+				A94C0AAE6427AFDF713A5C5D /* Pods_FinalProject_Popescu_Tudor.framework */,
+				4F2EBB0AB1046DFECBC8570C /* Pods_FinalProject_Popescu_Tudor_FinalProject_Popescu_TudorUITests.framework */,
+				D897EE59FCE803C55729EF8D /* Pods_FinalProject_Popescu_TudorTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,6 +254,19 @@
 			path = ExpPaid;
 			sourceTree = "<group>";
 		};
+		913DF12ED6835899E859B7EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C25E9F20F796DB73E2D85624 /* Pods-FinalProject_Popescu_Tudor.debug.xcconfig */,
+				EB8A1D78584215254299DF77 /* Pods-FinalProject_Popescu_Tudor.release.xcconfig */,
+				0C27DF91BCB5A4E34881CA96 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.debug.xcconfig */,
+				B4C7B267AC4136AE7E189928 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig */,
+				2A8DD9948E06439195B436DE /* Pods-FinalProject_Popescu_TudorTests.debug.xcconfig */,
+				092A3E9EDE1E6D63A7C1F873 /* Pods-FinalProject_Popescu_TudorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,9 +274,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2273C2271B6D3500FFE204 /* Build configuration list for PBXNativeTarget "FinalProject_Popescu_Tudor" */;
 			buildPhases = (
+				5AF8171B68C9BC25117C3133 /* [CP] Check Pods Manifest.lock */,
 				8B227394271B6D3300FFE204 /* Sources */,
 				8B227395271B6D3300FFE204 /* Frameworks */,
 				8B227396271B6D3300FFE204 /* Resources */,
+				565E54E4847C288CF4C41AFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,6 +293,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2273C5271B6D3500FFE204 /* Build configuration list for PBXNativeTarget "FinalProject_Popescu_TudorTests" */;
 			buildPhases = (
+				1114ED2CE9FF062D285F5C0F /* [CP] Check Pods Manifest.lock */,
 				8B2273AA271B6D3500FFE204 /* Sources */,
 				8B2273AB271B6D3500FFE204 /* Frameworks */,
 				8B2273AC271B6D3500FFE204 /* Resources */,
@@ -277,9 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2273C8271B6D3500FFE204 /* Build configuration list for PBXNativeTarget "FinalProject_Popescu_TudorUITests" */;
 			buildPhases = (
+				EBAC349DEB369428F5F88108 /* [CP] Check Pods Manifest.lock */,
 				8B2273B4271B6D3500FFE204 /* Sources */,
 				8B2273B5271B6D3500FFE204 /* Frameworks */,
 				8B2273B6271B6D3500FFE204 /* Resources */,
+				15A3417E69B44F52BB8019B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,6 +397,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1114ED2CE9FF062D285F5C0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinalProject_Popescu_TudorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15A3417E69B44F52BB8019B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		565E54E4847C288CF4C41AFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AF8171B68C9BC25117C3133 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinalProject_Popescu_Tudor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBAC349DEB369428F5F88108 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B227394271B6D3300FFE204 /* Sources */ = {
@@ -558,6 +698,7 @@
 		};
 		8B2273C3271B6D3500FFE204 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C25E9F20F796DB73E2D85624 /* Pods-FinalProject_Popescu_Tudor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -569,6 +710,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,6 +729,7 @@
 		};
 		8B2273C4271B6D3500FFE204 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB8A1D78584215254299DF77 /* Pods-FinalProject_Popescu_Tudor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -597,6 +741,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,6 +760,7 @@
 		};
 		8B2273C6271B6D3500FFE204 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A8DD9948E06439195B436DE /* Pods-FinalProject_Popescu_TudorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -639,6 +786,7 @@
 		};
 		8B2273C7271B6D3500FFE204 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 092A3E9EDE1E6D63A7C1F873 /* Pods-FinalProject_Popescu_TudorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -664,6 +812,7 @@
 		};
 		8B2273C9271B6D3500FFE204 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C27DF91BCB5A4E34881CA96 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -687,6 +836,7 @@
 		};
 		8B2273CA271B6D3500FFE204 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4C7B267AC4136AE7E189928 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

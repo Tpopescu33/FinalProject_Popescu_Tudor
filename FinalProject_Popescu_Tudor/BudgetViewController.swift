@@ -303,6 +303,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
     }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       get {
+          return .portrait
+       }
+    }
     
     @objc func viewTapped() {
         
