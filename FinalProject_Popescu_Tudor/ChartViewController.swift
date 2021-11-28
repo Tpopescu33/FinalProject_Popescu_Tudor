@@ -174,8 +174,8 @@ class ChartViewController: UIViewController {
     func getChart() {
         var entries : [ChartDataEntry] = []
         
-        let dataEntryRem = PieChartDataEntry(value: Double(tempRemEntries), label: "Remaining Expenses")
-        let dataEntryPaid = PieChartDataEntry(value: Double(tempPaidEntries), label: "Remaining Paid")
+        let dataEntryRem = PieChartDataEntry(value: Double(tempRemEntries), label: "Remaining")
+        let dataEntryPaid = PieChartDataEntry(value: Double(tempPaidEntries), label: "Paid")
         entries.append(dataEntryRem)
         entries.append(dataEntryPaid)
         pieChartView.backgroundColor = green3
@@ -213,6 +213,9 @@ class ChartViewController: UIViewController {
         barChartView.xAxis.setLabelCount(13, force: false)
         barChartView.xAxis.labelRotationAngle = 0
         barChartView.xAxis.granularity = 1.0
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.extraBottomOffset = 40
+        barChartView.legend.enabled = false
         
         print(months)
     }
