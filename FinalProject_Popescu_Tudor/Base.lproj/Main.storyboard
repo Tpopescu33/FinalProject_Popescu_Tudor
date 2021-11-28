@@ -492,7 +492,7 @@
             </objects>
             <point key="canvasLocation" x="1423" y="1347"/>
         </scene>
-        <!--Chart View Controller-->
+        <!--Reports-->
         <scene sceneID="Cna-fs-hhB">
             <objects>
                 <viewController id="Ir1-W4-PUd" customClass="ChartViewController" customModule="FinalProject_Popescu_Tudor" customModuleProvider="target" sceneMemberID="viewController">
@@ -500,13 +500,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLL-cL-N7T" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47f-mY-DFV" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="175" width="428" height="668"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLL-cL-N7T" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="175" width="428" height="668"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DXz-3B-JCm">
+                                <rect key="frame" x="149" y="108" width="131" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Monthly"/>
+                                    <segment title="Yearly"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.30588235289999999" green="0.62352941179999999" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segBarControl:" destination="Ir1-W4-PUd" eventType="valueChanged" id="TDa-De-mvO"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zPt-81-bEV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.84705882349999995" green="0.91372549020000005" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qLL-cL-N7T" firstAttribute="top" secondItem="zPt-81-bEV" secondAttribute="top" id="3NY-P9-MAL"/>
                             <constraint firstItem="zPt-81-bEV" firstAttribute="bottom" secondItem="qLL-cL-N7T" secondAttribute="bottom" id="CwX-rK-BLb"/>
@@ -514,9 +531,11 @@
                             <constraint firstItem="qLL-cL-N7T" firstAttribute="leading" secondItem="zPt-81-bEV" secondAttribute="leading" id="tuw-k8-7wF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pg2-sf-1Sw"/>
+                    <navigationItem key="navigationItem" title="Reports" id="pg2-sf-1Sw"/>
                     <connections>
+                        <outlet property="barChartView" destination="47f-mY-DFV" id="2Au-Wl-CGP"/>
                         <outlet property="pieChartView" destination="qLL-cL-N7T" id="y00-nS-dZ0"/>
+                        <outlet property="segBar" destination="DXz-3B-JCm" id="jRW-TY-egK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWf-zm-0u6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -532,6 +551,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oh6-uB-07R">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

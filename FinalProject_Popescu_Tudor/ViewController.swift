@@ -338,7 +338,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getExpPaid()
         getExpRemaining()
         getBalance()
-        print("month: \(self.monthNo)")
+        print("month: \(self.monthNo)", " year: \(self.yearNo)")
 
     }
     
