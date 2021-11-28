@@ -425,14 +425,16 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
         let Nav = self.tabBarController!.viewControllers![0] as! UINavigationController
+        let Nav2 = self.tabBarController!.viewControllers![2] as! UINavigationController
         let firstTab = Nav.topViewController as! ViewController
-
+        let thirdTab = Nav2.topViewController as! ChartViewController
 
 
         
         firstTab.monthNo = monthNo
         firstTab.yearNo = yearNo
-        
+        thirdTab.monthNo = monthNo
+        thirdTab.yearNo = yearNo
 
     }
     

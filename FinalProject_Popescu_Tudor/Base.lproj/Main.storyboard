@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -397,6 +398,7 @@
                     <connections>
                         <segue destination="MGV-30-7an" kind="relationship" relationship="viewControllers" destinationCreationSelector="1" id="pGP-Di-9Us"/>
                         <segue destination="4wM-zb-Dc4" kind="relationship" relationship="viewControllers" destinationCreationSelector="2" id="xC7-TR-2iv"/>
+                        <segue destination="FDK-Ve-XW1" kind="relationship" relationship="viewControllers" id="0u6-HI-Y4W"/>
                         <segue destination="65Y-0x-O4D" kind="relationship" relationship="viewControllers" id="o5U-Wo-Ys5"/>
                     </connections>
                 </tabBarController>
@@ -490,11 +492,65 @@
             </objects>
             <point key="canvasLocation" x="1423" y="1347"/>
         </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="Cna-fs-hhB">
+            <objects>
+                <viewController id="Ir1-W4-PUd" customClass="ChartViewController" customModule="FinalProject_Popescu_Tudor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Rh-m6-S5y">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLL-cL-N7T" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zPt-81-bEV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qLL-cL-N7T" firstAttribute="top" secondItem="zPt-81-bEV" secondAttribute="top" id="3NY-P9-MAL"/>
+                            <constraint firstItem="zPt-81-bEV" firstAttribute="bottom" secondItem="qLL-cL-N7T" secondAttribute="bottom" id="CwX-rK-BLb"/>
+                            <constraint firstItem="zPt-81-bEV" firstAttribute="trailing" secondItem="qLL-cL-N7T" secondAttribute="trailing" id="ZCB-Qj-Gik"/>
+                            <constraint firstItem="qLL-cL-N7T" firstAttribute="leading" secondItem="zPt-81-bEV" secondAttribute="leading" id="tuw-k8-7wF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pg2-sf-1Sw"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="qLL-cL-N7T" id="y00-nS-dZ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KWf-zm-0u6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3222.897196261682" y="2032.6133909287259"/>
+        </scene>
+        <!--Charts-->
+        <scene sceneID="ccS-KF-fZU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FDK-Ve-XW1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Charts" image="chart.pie.fill" catalog="system" selectedImage="chart.pie.fill" id="hFQ-1E-QtE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oh6-uB-07R">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ir1-W4-PUd" kind="relationship" relationship="rootViewController" id="aVN-Nk-fTn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8M-5W-KLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="1687"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1024px-Emblem-money.svg" width="1024" height="1024"/>
         <image name="barometer" catalog="system" width="128" height="121"/>
+        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -36,6 +36,7 @@
 		8BCC0DD4272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */; };
 		8BCC0DD8272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */; };
 		8BCC0DD9272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */; };
+		8BD44A5D2752D25700375761 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD44A5C2752D25700375761 /* ChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		8BCC0DD2272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpRemaining+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BCC0DD6272E1EC000EE1F15 /* ExpPaid+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BCC0DD7272E1EC000EE1F15 /* ExpPaid+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpPaid+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BD44A5C2752D25700375761 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		A94C0AAE6427AFDF713A5C5D /* Pods_FinalProject_Popescu_Tudor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject_Popescu_Tudor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4C7B267AC4136AE7E189928 /* Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests/Pods-FinalProject_Popescu_Tudor-FinalProject_Popescu_TudorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C25E9F20F796DB73E2D85624 /* Pods-FinalProject_Popescu_Tudor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject_Popescu_Tudor.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject_Popescu_Tudor/Pods-FinalProject_Popescu_Tudor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				8B166510271CEFAA007E68C5 /* BudgetViewController.swift */,
 				8B41C7482725CC81008E9F99 /* SignInViewController.swift */,
 				8BA39E1B274AD52F00AC7D30 /* SettingsTableViewController.swift */,
+				8BD44A5C2752D25700375761 /* ChartViewController.swift */,
 			);
 			path = FinalProject_Popescu_Tudor;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				8B41C7492725CC81008E9F99 /* SignInViewController.swift in Sources */,
 				8B0E7739272F286800B13C46 /* BalanceRem+CoreDataClass.swift in Sources */,
 				8BCC0DD4272E1E5300EE1F15 /* ExpRemaining+CoreDataProperties.swift in Sources */,
+				8BD44A5D2752D25700375761 /* ChartViewController.swift in Sources */,
 				8B2E2E8C272CC00500B87569 /* LoginDictionary+CoreDataClass.swift in Sources */,
 				8BCC0DC9272DF08B00EE1F15 /* IncomeTable+CoreDataClass.swift in Sources */,
 				8B2E2E8D272CC00500B87569 /* LoginDictionary+CoreDataProperties.swift in Sources */,
