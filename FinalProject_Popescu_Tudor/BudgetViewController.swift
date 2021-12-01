@@ -286,7 +286,9 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         userName = defaults.string(forKey: "userName")!
         monthNo = defaults.integer(forKey: "monthNo")
         yearNo = defaults.integer(forKey: "yearNo")
+        if defaults.string(forKey: "month") != nil && defaults.string(forKey: "year") != nil {
         inputMonthField.text = "\(defaults.string(forKey: "month")!), \(defaults.string(forKey: "year")!)"
+        }
         self.tableView.allowsSelectionDuringEditing = true
         getTable()
         getTableExp()
@@ -674,7 +676,7 @@ extension BudgetViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-
+        pickerView.backgroundColor = green3
         if component == 0 {
             return 12
         }
