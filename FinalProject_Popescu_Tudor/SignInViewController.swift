@@ -129,9 +129,16 @@ class SignInViewController: UIViewController {
             
             if  (userName?.count != 0 && passWord?.count != 0 && confirmPassWord?.count != 0) {
                 if confirmPassWord! == passWord! {
+                    
+                    if self.loginDictionary.keys.contains(userName!) {
+                        self.createAlert(title: "User Exists!", msg: "The User Name is already taken")
+                    } else {
+                    
+                    
                     self.createEntry(userName: userName! ,passWord: passWord!)
                     defaults.set(userName, forKey: "userName")
                     self.performSegue(withIdentifier: "login", sender: self)
+                    }
                     
                 } else {
                     self.createAlert(title: "Password Don't Match!", msg: "Password and Confirm Password do not match")
@@ -182,6 +189,9 @@ class SignInViewController: UIViewController {
     }
     
     func createEntry(userName: String, passWord: String) {
+     
+        
+        
         
         let newItem = LoginDictionary(context: context)
         newItem.userName = userName
