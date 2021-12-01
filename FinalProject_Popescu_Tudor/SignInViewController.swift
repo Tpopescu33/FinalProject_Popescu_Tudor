@@ -94,7 +94,7 @@ class SignInViewController: UIViewController {
         let alert = UIAlertController(title: title, message: msg , preferredStyle: .alert)
         alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = green1
         alert.view.tintColor = black1
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: {_ in self.dismiss(animated: true, completion: nil)}))
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {_ in }))
         
         self.present(alert, animated: true, completion: nil)
         
