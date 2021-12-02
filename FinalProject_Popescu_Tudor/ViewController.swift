@@ -72,25 +72,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         fetchReq.predicate = NSPredicate(
             format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName        )
-        self.tableView.reloadData()
         self.sections[0].titleAmount = 0
+        self.tableView.reloadData()
+        
         do {
             let items = try context.fetch(fetchReq)
             
-            print(items.count)
+            print(items)
             
             
             self.sections[0].titleAmount = 0
             for i in 0..<items.count {
                 if (items.count != 0) {
                    
-                    sections[0].changeTitleAmount(option: items[i].balance - sections[2].titleAmount)
+                    sections[0].changeTitleAmount(option: items[i].balance)
                 }
                 self.tableView.reloadData()
                 
             }
             
-
+            sections[0].changeTitleAmount(option: 0 - sections[2].titleAmount)
         } catch {
             print("error getting balance")
         }
@@ -114,7 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             let items = try context.fetch(fetchReq)
             
-            print(items.count)
+            print(items)
             
            
             for i in 0..<items.count {
@@ -153,7 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             let items = try context.fetch(fetchReq)
             
-            print(items.count)
+            print(items)
             self.tableView.reloadData()
           
             for i in 0..<items.count {
@@ -338,7 +339,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getExpPaid()
         getExpRemaining()
         getBalance()
-        print("month: \(self.monthNo)", " year: \(self.yearNo)")
+        print("month: \(self.monthNo)", " year: \(self.yearNo)", "user: \(self.userName)")
 
     }
     

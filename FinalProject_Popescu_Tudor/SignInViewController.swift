@@ -83,7 +83,7 @@ class SignInViewController: UIViewController {
             
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         signInCont.addAction(signInAction)
         signInCont.addAction(cancelAction)
         self.present(signInCont, animated: true, completion: nil)
@@ -152,7 +152,7 @@ class SignInViewController: UIViewController {
             
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         signUpCont.addAction(signUpAction)
         signUpCont.addAction(cancelAction)
         self.present(signUpCont, animated: true, completion: nil)

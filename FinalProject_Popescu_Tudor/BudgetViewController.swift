@@ -166,7 +166,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         newItem.month = monthNo
         newItem.year = yearNo
         newItem.userName = userName
-        
+        print(newItem)
         do {
             try context.save()
             
@@ -227,7 +227,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func deleteIncomeEntry2(item: BalanceRem) {
         context.delete(item)
         getTable()
-        
+        print(item)
         do {
             try context.save()
             getTable()
@@ -476,34 +476,50 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if indexPath.section == 0 {
 
             do {
+                
+                
+                
             let items = try context.fetch(IncomeTable.fetchRequest())
                 let item = items[indexPath.row-1]
+                
                 deleteIncomeEntry(item: item)
                 sections[0].isOpen = false
                 getTable()
                 getTableExp()
-               
+                print("test1")
                
                 
             }
             catch{
-                
+                print("error deleteing income")
             }
                 
-                do {
-                let items = try context.fetch(BalanceRem.fetchRequest())
-                    let item = items[indexPath.row-1]
-                    deleteIncomeEntry2(item: item)
-                    sections[0].isOpen = false
-                    getTable()
-                    getTableExp()
-                   
+            do {
+                
+                let fetchReq: NSFetchRequest<BalanceRem>
+                fetchReq = BalanceRem.fetchRequest()
+                
+                fetchReq.predicate = NSPredicate(
+                    format: "month == %i AND year == %i AND userName = %@", monthNo, yearNo, userName        )
+                
+                
+            let items = try context.fetch(fetchReq)
+                
+                
+                
+                let item = items[indexPath.row-1]
+                deleteIncomeEntry2(item: item)
+                sections[0].isOpen = false
+                getTable()
+                
+                print("test")
                    
                     
-                }
-                catch{
+            }
+            catch{
+                print("error deleteing balance")
                     
-                }
+            }
             } else if indexPath.section == 1 {
                 
                 do {
