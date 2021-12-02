@@ -429,7 +429,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         addExpenseCont.addAction(confirmAction)
         addExpenseCont.addAction(cancelAction)
         self.present(addExpenseCont, animated: true, completion: nil)
