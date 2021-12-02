@@ -362,7 +362,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         addIncomeCont.addAction(confirmAction)
         addIncomeCont.addAction(cancelAction)
         self.present(addIncomeCont, animated: true, completion: nil)
@@ -403,7 +403,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         })
        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)})
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         addIncomeCont.addAction(confirmAction)
         addIncomeCont.addAction(cancelAction)
         self.present(addIncomeCont, animated: true, completion: nil)
